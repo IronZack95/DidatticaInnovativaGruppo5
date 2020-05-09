@@ -100,7 +100,30 @@ Siccome il metodo è sia consistente che zerostabile allora il metodo è consist
 
 
 MICHELE
+Il metodo di Heun è un metodo di Runge-Kutta del secondo ordine, composto da due diverse equazioni:
+-l'equazione del predittore, la quale fornisce una prima approssimazione del punto successivo della soluzione
+-l'equazione del correttore, la quale calcola un punto più preciso usando il valore calcolato dal predittore
+l'equazione del predittore è un metodo di eulero in avanti
+l'equazione del correttore è simile al metodo dei trapezi
+per questo motivo il metodo di heun è noto anche come metodo di eulero migliorato o metodo dei trapezi esplicito
 
+Procediamo ora a vedere graficamente come funziona questo metodo ed in generale un metodo di Runge-Kutta.
+Consideriamo da un problema di cauchy e dalla sua soluzione corretta per confrontarla con la soluzione fornita dal metodo di Heun
+Partiamo dal punto Un  e lo consideriamo corretto, quindi appartenente alla soluzione. Calcoliamo poi il valore di f nul punto 
+Un, Tn, il quale rappresenta la derivata alla soluzione evidenziata nel grafico dalla retta rossa.
+Applicando l'equazione del predittore, quindi un metodo di eulero in avanti, stimiamo il successivo punto Un+1. Si può notare come il 
+valore calcolato presenta un sostanziale scostamento rispetto al valore corretto.
+Per migliorare la nostra soluzione procediamo valutando la funzione f in Un+1, Tn+1, rappresentata dalla retta blu.
+L'equazione del correttore utilizza la retta rossa e blu per calcolare una retta con una pendenza più corretta, mediando i coefficienti 
+angolari delle due rette, ottenendo cosi la retta gialla.
+Si può chiaramente notare come il punto così calcolato presenti un errore molto inferiore.
+Nonostante un migliore approccio alla soluzione del problema di cauchy, il metodo di Heun non è ovviamente esente da errori.
+Essendo un metodo del secondo il suo errore globale di troncamento sarà un o grande di h^2; si può inoltre dimostrare come il suo errore 
+di troncamento locale, ovvero l'errore introdotto dal singolo passo di integrazione partendo da un punto considerato corretto è un o 
+grande di h^3, mentre per il metodo di Eulero è un o grande di h^2
+
+Ricapitolando il metodo di Heun permette la risoluzione di problemi di Cauchy con un metodo del secondo ordine simile a quello dei trapezi,
+ma con il vantaggio di essere un metodo esplicito, quindi di facile implementazione e risoluzione
 
 
 

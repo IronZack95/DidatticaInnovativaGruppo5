@@ -1,9 +1,10 @@
 PUNTI FONDAMENTALI:
 
-prensentazione 30 min
+---------------------------------------------/
+** prensentazione 30 min
 
-6 minuti a testa
-
+** 6 minuti a testa
+---------------------------------------------/
 
 
 PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
@@ -17,7 +18,7 @@ PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
 	* Eulero * ODE23 *ODE45
  - Video EULERO
  - Perchè falliscono i metodi ad un passo di Eulero
- - Cosa stiamo cercando di migliorare l'ordine di queste funzioni 
+ - Cosa stiamo cercando di migliorare l'ordine di queste funzioni
 	(quindi sono metodi ad un passo con un numero superioore di valutazioni della funzione all'interno del passo stesso)
  - Arriviamo ai metodi di Runge-Kutta
  - Tra cui feuler beuler sono metodi RK ma di ordine 1, sono casi particolari
@@ -34,23 +35,26 @@ PARTE 2: METODI RK SOTTO AL COFANO 	----> SAMUDONZO		6 minuti
 				    -> tableau di Butcher
  - estrapolazione a partire dalla tavola -> metodi impliciti e espliciti
 					 -> proprietà (quante?).
- - 
+ -
 
 
 
 PATRE 3: HEUN COME CASE-STUDY 		----> MICHELE		6 minuti
- - Come è fatto (predittore correttore)
- - Esempio grafico
- - Stima dell'errore
+ - Struttura del metodo
+ - Parallelismo con metodo dei trapezi
+ - Esempio grafico del metodo
+ - Stima dell'errore globale e locale
+
+PARTE 4: METODI EMBEDDED E PASSO ADATTIVO  ----> SAMUDEGAETANO	G minuti
+-Motivi per introdurre i metodi embedded
+-Esempi tabelle di butcher
+-Stima errore
+-Algoritmo passo adattivo
+
+PARTE 5: BOGACKI-SHAMPINE e ODE23 	----> LUCAROSE		6 minuti
 
 
 
-PARTE 4: METODI EMBEDDED SOTTO AL COFANO ----> LUCAROSE		6 minuti
 
 
-
-
-
-PARTE 5: 				----> SAMUDEGAETANO		6 minuti
-
- 
+<<<<<<< HEAD
