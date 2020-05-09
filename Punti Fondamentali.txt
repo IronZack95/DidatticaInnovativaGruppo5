@@ -1,8 +1,9 @@
 PUNTI FONDAMENTALI:
----------------------------------------------/
-prensentazione 30 min
 
-6 minuti a testa
+---------------------------------------------/
+** prensentazione 30 min
+
+** 6 minuti a testa
 ---------------------------------------------/
 
 
@@ -44,11 +45,16 @@ PATRE 3: HEUN COME CASE-STUDY 		----> MICHELE		6 minuti
  - Esempio grafico del metodo
  - Stima dell'errore globale e locale
 
+PARTE 4: METODI EMBEDDED E PASSO ADATTIVO  ----> SAMUDEGAETANO	G minuti
+-Motivi per introdurre i metodi embedded
+-Esempi tabelle di butcher
+-Stima errore
+-Algoritmo passo adattivo
 
-PARTE 4: METODI EMBEDDED SOTTO AL COFANO ----> LUCAROSE		6 minuti
+PARTE 5: BOGACKI-SHAMPINE e ODE23 	----> LUCAROSE		6 minuti
 
 
 
 
 
-PARTE 5: 				----> SAMUDEGAETANO		6 minuti
+<<<<<<< HEAD
