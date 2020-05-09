@@ -11,11 +11,12 @@ PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
 
  - Introduzione al problema della risoluzione delle ODE generale
  - Esempi di sistemi dinamici famosi
-	*tre corpi *pendolo
+    	*tre corpi
+      *pendolo
  - Scrittura del sistema dinamico pendolo (veloce)
  - Problema di Cauchy
  - Differenza tra funzioni
-	* Eulero
+      * Eulero
  - Video EULERO
  - Perchè falliscono i metodi ad un passo di Eulero
  - Cosa stiamo cercando di migliorare l'ordine di queste funzioni
@@ -23,14 +24,15 @@ PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
  - Arriviamo ai metodi di Runge-Kutta
  - Tra cui feuler beuler sono metodi RK ma di ordine 1, sono casi particolari
  - ma si possono ulteriormente migliorare in due modi
-	*costo computazionale *passo adattivo
+	  *costo computazionale
+    *passo adattivo
  - Nascono gli Embedded
  - brevissima descrizione embedded
     * ODE23
     * ODE45
  - Video ODE1
  - Video ODE2
- 
+
 PARTE 2: METODI RK SOTTO AL COFANO 	----> SAMUDONZO		6 minuti
 
  - definizione dei metodi (perchè sono interessanti) + Formula generale
