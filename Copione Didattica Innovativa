@@ -54,14 +54,11 @@ MICHELE
 
 
 
-ROSE
-
-
-
-
 
 
 SAMU
+
+%%Introduzione metodi embedded
 Da una parte, si vuole che il passo sia sufficientemente piccolo per garantire un’adeguata precisione; dall’altra, si vuole che sia 
 sufficientemente largo da evitare un lavoro computazionale troppo oneroso.
 SLIDE 1
@@ -87,8 +84,7 @@ Per dare robustezza all’algoritmo, vengono introdotti fattori di sicurezza che
 della tolleranza sia soddisfatta, e quindi non si continui a ripetere uno step aumentando il costo computazionale,  e inoltre non si 
 vuole che il passo cambi bruscamente per ovvi motivi di precisione.
 
-
-
+ROSE
 
 
 
