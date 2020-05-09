@@ -113,7 +113,7 @@ l'equazione del predittore è un metodo di eulero in avanti
 l'equazione del correttore è simile al metodo dei trapezi
 per questo motivo il metodo di heun è noto anche come metodo di eulero migliorato o metodo dei trapezi esplicito
 possiamo vedere sulla slide il tableau di Butcher associato al metodo di Heun; si può notare come la somma delle due componenti del 
-vettore bj sia 1, quindi si può concludere che il metodo è consistente
+vettore bi sia 1, quindi si può concludere che il metodo è consistente
 
 SLIDE 2
 
