@@ -52,9 +52,3 @@ PARTE 4: METODI EMBEDDED E PASSO ADATTIVO  ----> SAMUDEGAETANO	G minuti
 -Algoritmo passo adattivo
 
 PARTE 5: BOGACKI-SHAMPINE e ODE23 	----> LUCAROSE		6 minuti
-
-
-
-
-
-<<<<<<< HEAD
