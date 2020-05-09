@@ -1,7 +1,7 @@
 
 Start Presentazione
 
-ZACK %% Provvisorio
+ZACK
 
 Concentriamoci ora su due dei problemi più famosi della dinamica classica
 il problema dei tre corpi e il pendolo sferico
@@ -39,12 +39,63 @@ componente 456 sono le derivate prime delle coordinate spaziali
 
 SAMUDONZO
 
+
+SLIDE 1:
 I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
-In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff. bi e il termine Ki  sono le approssimazioni delle derivate della funzione incognita in punti intermedi dell'intervallo di integrazione.
+In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff. bi e il termine Ki 
+sono le approssimazioni delle derivate della funzione incognita in punti intermedi dell'intervallo di integrazione.
+
+I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente espressione:
+SLIDE 2:
+I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono un metodo di RK e questi possono essere 
+accorpati all'interno di una tabella che prende il nome di Tabluau di Butcher.
+In figura è mostrata la disposizione di tali coefifcineti all'interno della tabella. 
+SLIDE3:
+Dunque per definire ogni sigolo metodo occorre costruire il suo 
+corrispondente Tableau per rappresentarlo in forma compatta. 
+
+Un famoso metodo di Runge-Kutta è quello del quarto ordine, 
+da questo esempio è possibile notare 2 cose:
+	
+1) Gli stadi del metodo, K,1...K4 che rappresentano il calcolo della derivata in punti
+precisi all'interno del passo, 
+
+IMMAGINE SLIDE4: dall'esempio grafico è possibile notare il valore corrispondente dei vari K nei vari  punti del passo di integrazione h.
+	
+	
+SLIDE5:
+2)la posizione particolare dei coefficienti nella Tableau di Butcher, 
+che ci consentono di dedurre delle interessanti proprietà:
+
+- in primo luogo il METODO DI RISOLUZIONE, il quale può essere
+  esplicito nel caso in cui la matrice dei coeff. aij sia diagonale inferiore 
+  mentre in caso contrario, quindi una matrice generica, è detto implicito. 
+		
+->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente 
+   dai valore precedentemente calcolati. 
+   Questo metodo è meno costoso poichè sfrutta in maniera più intelligente le info
+   sulle derivate della funzione nello stesso passo d'integrazione. 
+->nel metodo IMPLICITO la soluzione numerica dipende anche da essa stessa. 
+   Tale metodo quindi porta alla risoluzione di un'equazione NON LINEARE
+   e dunque generalmente sono più costosi.
 
 
-I coefficienti a_ij, bi, ci definiscono 
 
+-la proprietà di CONSISTENZA, derivanta dalla sommatoria dei 
+coeff. b_i per i da 1 a s =1.
+	
+SLIDE6:	
+
+			
+	-ordine? 
+	-regione di assoluta stabilità?
+
+
+[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera, con h che indica il passo di integrazione e la funzione Phi detta funzione 
+incremento scritta nel seguente modo. Supponendo che anche la seguente funzione Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità 
+rispetto al suo secondo argomento, è possibile affermare che il metodo di Runge-Kutta è zero stabile. 
+Siccome il metodo è sia consistente che zerostabile allora il metodo è consistente.]
+ 
 
 
 
@@ -62,34 +113,3 @@ ROSE
 
 
 SAMU
-Da una parte, si vuole che il passo sia sufficientemente piccolo per garantire un’adeguata precisione; dall’altra, si vuole che sia 
-sufficientemente largo da evitare un lavoro computazionale troppo oneroso.
-SLIDE 1
-La soddisfazione di queste 2 condizioni si sposa perfettamente con la richiesta di rendere il passo adattivo.
-Quindi, come implementare un codice\algoritmo che renda il passo adattivo, diminuendo il costo computazionale, ma che comunque 
-garantisca una tolleranza dell’errore locale scelta a priori.
-Si parta ovviamente dalla scelta di un passo iniziale h, il programma computa le 2 approssimazioni numeriche della soluzione u1 e 
-u1 cappello, calcolati dai 2 metodi RK embedded. La differenza tra le approssimazioni dà una buona stima dell’errore locale. 
-E ovviamente questa stima, ossia il modulo della differenza delle 2 soluzioni della coppia embedded, deve essere minore uguale della 
-tolleranza prescelta. Come si può vedere, la tolleranza può essere formata da un termine di errore assoluto rappresentato dal fattore 
-Atol e uno relativo Rtol che invece individua l’errore relativo tra le 2 computazioni tra il passo precedente e quello attuale. 
-SLIDE 2	
-Prendiamo però come errore locale locale effettivo la norma 2 del rapporto tra la differenza tra le 2 soluzioni numeriche all’iesimo 
-passo e la tolleranza imposta. Per rispettare la condizione della slide precedente vogliamo che l’errore sia paragonabile a 1. 
-Inoltre l’errore locale si può vedere come una costante C moltiplicata per una potenza q+1 del passo, dove q è il minor ordine tra 
-i 2 della coppia embedded, e inoltre noi vogliamo che questo errore sia uguale a 1 per trovare il passo ottimale. 
-E vogliamo che C moltiplicato per una potenza q+1 passo ottimale sia comparabile a 1. Si arriva alla formula del passo ottimale che 
-è uguale al passo iniziale moltiplicato per il reciproco dell’errore elevato a 1/(q+1).
-Se l’errore se minore uguale a 1, la tolleranza è rispettata e la soluzione dell’iesimo passo è accettata. 
-Si procede con il calcolo del nuovo passo hnew e si calcolo la soluzione del nuovo step. Se la condizione non è verificata, 
-la soluzione non viene accettata e si ripete il calcolo con il nuovo passo hnew.
-Per dare robustezza all’algoritmo, vengono introdotti fattori di sicurezza che permettono una maggiore possibilità che la condizione 
-della tolleranza sia soddisfatta, e quindi non si continui a ripetere uno step aumentando il costo computazionale,  e inoltre non si 
-vuole che il passo cambi bruscamente per ovvi motivi di precisione.
-
-
-
-
-
-
-
