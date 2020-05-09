@@ -1,15 +1,76 @@
-Start
+
+Start Presentazione
 
 ZACK
 
+Concentriamoci ora su due dei problemi più famosi della dinamica classica
+il problema dei tre corpi e il pendolo sferico
+
+il problema dei tre corpi consiste nel calcolare date
+la posizione iniziale
+la massa
+la velocità
+di 3 corpi soggetti all'influsso della reciproca attrazione gravitazionale l'evoluzione Futura del sistema da essi costituito
+si può pensare di utilizzare un sistema di equazioni differenziali ordinarie derivanti da le leggi del moto di Isaac Newton 
+come avviene normalmente in presenza di due corpi
+
+ però si dimostra A differenza del caso di due corpi che non si conoscono soluzioni in forma chiusa 
+per cui noi Supponiamo che uno dei tre corpi abbia Massa decisamente superiore a quella degli altri due
+In particolare se dovessimo studiare il sistema di tre corpi come Terra Marte e sole  in particolare se dovessimo studiare 
+sistema di tre corpi come Terra Marte e il sole dovremmo ricondurci a due situazioni in cui studiamo singolarmente 
+l'influsso tra il sole e la Terra e il Sole e Marte
+sempre su quel ipotesi che il sole non risente mai dell'attrazione gravitazionale degli altri due corpi contemporaneamente
+L'unico modo di approssimare al meglio il moto di tre corpi e quindi utilizzare un metodo numerico
+
+bene, Ora concentriamoci invece su un altro esempio classico ovvero il pendolo sferico
+Allora in questo caso Cosa vogliamo fare vogliamo studiare il moto di un . con coordinate X1 X2 X3 
+Che nel nostro caso è il centro di massa di un oggetto sferico di peso m soggetto la forza di gravità è 
+vincolato a muoversi su una superficie di forma sferica di equazione X 1 quadro X2 quadro X3 quadro meno 1 = 0 
+Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma compatta  descrive le accelerazioni che agiscono su questo. 
+Abbiamo indicato con XN punto e i due punti la derivata prima e seconda DX rispetto al tempo T e con h la matrice hessiana di fi
+
+al fine di risolvere numericamente l'equazione riportata nella slide precedente Riportiamo tutto in forma normale quindi 
+riscriviamo in una nuova incognita Y un vettore di 6 componenti che saranno poi le variabili di stato del nostro sistema  
+per cui le prime tre componenti saranno le nostre tre coordinate spaziali mentre le seconde tre è componenti quindi la 
+componente 456 sono le derivate prime delle coordinate spaziali 
 
 
 
 
 SAMUDONZO
 
+I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
+In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff. bi e il termine Ki 
+sono le approssimazioni delle derivate della funzione incognita in punti intermedi dell'intervallo di integrazione.
+
+I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente espressione:
+
+I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono un metodo di RK e questi possono essere 
+accorpati all'interno di una tabella che prende il nome di Tabluau di Butcher.
+In figura è mostrata la disposizione di tali coefifcineti all'interno della tabella. 
+
+Dunque per definire ogni sigolo metodo occorre costruire il suo 
+corrispondente Tableau per rappresentarlo in forma compatta. Un famoso metodo di Runge-Kutta è quello del quarto ordine, in cui è possibile notare 2 cose:
+	1) i termini K,1...K4 che rappresentano il calcolo della derivata in punti precisi all'interno del passo, 
+	2)la posizione particolare dei coefficienti nella Tableau di Butcher, che ci consentono di dedurre delle interessanti proprietà:
+
+	-la proprietà di CONSISTENZA, derivanta dalla sommatoria dei coeff. b_i per i da 1 a s =1.
+	-il METODO DI RISOLUZIONE, il quale può essere esplicito nel caso in cui la matrice dei coeff. aij sia diagonale inferiore mentre in caso contrario è detto implicito. 
+		->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente dai valore precedentemente calcolati. 
+			 Questo metodo è meno costoso poichè sfrutta in maniera più intelligente le informazioni sulle derivate della funzione nello stesso passo d'integrazione. 
+		->nel metodo IMPLICITO la soluzione numerica dipende anche da essa stessa. 
+		 	 Per questa ragione un metodo implicito porta alla risoluzione di un'equazione NON LINEARE
+		  	 e dunque sono più costosi.
+			
+	-ordine? 
+	-regione di assoluta stabilità?
 
 
+[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera, con h che indica il passo di integrazione e la funzione Phi detta funzione 
+incremento scritta nel seguente modo. Supponendo che anche la seguente funzione Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità 
+rispetto al suo secondo argomento, è possibile affermare che il metodo di Runge-Kutta è zero stabile. 
+Siccome il metodo è sia consistente che zerostabile allora il metodo è consistente.]
+ 
 
 
 
