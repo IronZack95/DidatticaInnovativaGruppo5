@@ -15,7 +15,7 @@ PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
  - Scrittura del sistema dinamico pendolo (veloce)
  - Problema di Cauchy
  - Differenza tra funzioni
-	* Eulero * ODE23 *ODE45
+	* Eulero
  - Video EULERO
  - Perchè falliscono i metodi ad un passo di Eulero
  - Cosa stiamo cercando di migliorare l'ordine di queste funzioni
@@ -26,7 +26,11 @@ PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
 	*costo computazionale *passo adattivo
  - Nascono gli Embedded
  - brevissima descrizione embedded
-
+    * ODE23
+    * ODE45
+ - Video ODE1
+ - Video ODE2
+ 
 PARTE 2: METODI RK SOTTO AL COFANO 	----> SAMUDONZO		6 minuti
 
  - definizione dei metodi (perchè sono interessanti) + Formula generale
