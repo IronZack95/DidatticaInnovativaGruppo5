@@ -39,10 +39,10 @@ PARTE 2: METODI RK SOTTO AL COFANO 	----> SAMUDONZO		6 minuti
 
 
 PATRE 3: HEUN COME CASE-STUDY 		----> MICHELE		6 minuti
- - Come è fatto (predittore correttore)
- - Esempio grafico
- - Stima dell'errore
-
+ - Struttura del metodo
+ - Parallelismo con metodo dei trapezi
+ - Esempio grafico del metodo
+ - Stima dell'errore globale e locale
 
 
 PARTE 4: METODI EMBEDDED SOTTO AL COFANO ----> LUCAROSE		6 minuti
