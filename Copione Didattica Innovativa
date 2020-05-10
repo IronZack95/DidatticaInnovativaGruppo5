@@ -168,12 +168,12 @@ che mi porta al punto successivo.
 SLIDE 7
 
 Facciamo ora un confronto fra il metodo di Heun e i metodi visti in precedenza
-Il metodo di Heun essendo un metodo del secondo ordine ha un errore globale di troncamento che cresce come un o grande di h^2, mentre 
+Il metodo di Heun essendo un metodo del secondo ordine ha un errore di troncamento globale che cresce come un o grande di h^2, mentre 
 il suo errore di troncamento locale, ovvero l'errore introdotto dal singolo passo di integrazione è un o grande di h^3. 
 Per il metodo di Eulero in avanti, metodo del primo ordine, l’errore globale di troncamento cresce come un o grande di h, mentre 
 l’errore locale come un o grande di h^2.
-Il vantaggio invece rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con gli stessi errori, è la linearità del 
-metodo di Heun, che risulta quindi più facile da implementare.
+Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con gli stessi errori, 
+è la linearità del metodo di Heun, che risulta quindi più facile da implementare.
 
 ROSE
 
