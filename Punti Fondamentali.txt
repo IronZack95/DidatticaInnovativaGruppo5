@@ -11,21 +11,27 @@ PARTE 1: INTRODUZIONE 			---> ZACK		6 minuti
 
  - Introduzione al problema della risoluzione delle ODE generale
  - Esempi di sistemi dinamici famosi
-	*tre corpi *pendolo
+    	*tre corpi
+      *pendolo
  - Scrittura del sistema dinamico pendolo (veloce)
  - Problema di Cauchy
  - Differenza tra funzioni
-	* Eulero * ODE23 *ODE45
+      * Eulero
  - Video EULERO
  - Perchè falliscono i metodi ad un passo di Eulero
  - Cosa stiamo cercando di migliorare l'ordine di queste funzioni
-	(quindi sono metodi ad un passo con un numero superioore di valutazioni della funzione all'interno del passo stesso)
+	(quindi sono metodi ad un passo con un numero superiore di valutazioni della funzione all'interno del passo stesso)
  - Arriviamo ai metodi di Runge-Kutta
  - Tra cui feuler beuler sono metodi RK ma di ordine 1, sono casi particolari
  - ma si possono ulteriormente migliorare in due modi
-	*costo computazionale *passo adattivo
+	  *costo computazionale
+    *passo adattivo
  - Nascono gli Embedded
  - brevissima descrizione embedded
+    * ODE23
+    * ODE45
+ - Video ODE1
+ - Video ODE2
 
 PARTE 2: METODI RK SOTTO AL COFANO 	----> SAMUDONZO		6 minuti
 
@@ -52,9 +58,3 @@ PARTE 4: METODI EMBEDDED E PASSO ADATTIVO  ----> SAMUDEGAETANO	G minuti
 -Algoritmo passo adattivo
 
 PARTE 5: BOGACKI-SHAMPINE e ODE23 	----> LUCAROSE		6 minuti
-
-
-
-
-
-<<<<<<< HEAD
