@@ -41,15 +41,24 @@ SAMUDONZO
 
 
 SLIDE 1:
-I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
-In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff. bi e il termine Ki 
-sono le approssimazioni delle derivate della funzione incognita in punti intermedi dell'intervallo di integrazione.
+I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni 
+della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
+In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff. 
+bi e il termine Ki 
+sono le approssimazioni delle derivate della funzione incognita in punti intermedi 
+dell'intervallo di integrazione.
 
-I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente espressione:
+I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente 
+espressione:
+E quindi è possibile riscontrare una dipendenza dell'espressione geneerale dai 
+coeff a_ij, bi, ci.
+
 SLIDE 2:
-I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono un metodo di RK e questi possono essere 
+I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono 
+un metodo di RK e questi possono essere 
 accorpati all'interno di una tabella che prende il nome di Tabluau di Butcher.
 In figura è mostrata la disposizione di tali coefifcineti all'interno della tabella. 
+
 SLIDE3:
 Dunque per definire ogni sigolo metodo occorre costruire il suo 
 corrispondente Tableau per rappresentarlo in forma compatta. 
@@ -57,19 +66,21 @@ corrispondente Tableau per rappresentarlo in forma compatta.
 Un famoso metodo di Runge-Kutta è quello del quarto ordine, 
 da questo esempio è possibile notare 2 cose:
 	
-1) Gli stadi del metodo, K,1...K4 che rappresentano il calcolo della derivata in punti
-precisi all'interno del passo, 
+1) Gli stadi del metodo, K,1...K4 che rappresentano il calcolo della derivata 
+in punti precisi all'interno del passo, 
 
-IMMAGINE SLIDE4: dall'esempio grafico è possibile notare il valore corrispondente dei vari K nei vari  punti del passo di integrazione h.
+IMMAGINE SLIDE4: dall'esempio grafico è possibile notare il valore
+ corrispondente dei vari termini K nei vari punti del passo di integrazione h.
 	
 	
 SLIDE5:
-2)la posizione particolare dei coefficienti nella Tableau di Butcher, 
-che ci consentono di dedurre delle interessanti proprietà:
+2) la posizione particolare dei coefficienti nel Tableau di Butcher, 
+ ci consentono di dedurre delle interessanti proprietà:
 
 - in primo luogo il METODO DI RISOLUZIONE, il quale può essere
-  esplicito nel caso in cui la matrice dei coeff. aij sia diagonale inferiore 
-  mentre in caso contrario, quindi una matrice generica, è detto implicito. 
+  esplicito nel caso in cui la matrice dei coeff. aij sia strettamente diagonale 
+  inferiore mentre in caso contrario, quindi una matrice generica, è detto 
+  implicito. 
 		
 ->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente 
    dai valore precedentemente calcolati. 
@@ -91,10 +102,14 @@ SLIDE6:
 	-regione di assoluta stabilità?
 
 
-[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera, con h che indica il passo di integrazione e la funzione Phi detta funzione 
-incremento scritta nel seguente modo. Supponendo che anche la seguente funzione Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità 
-rispetto al suo secondo argomento, è possibile affermare che il metodo di Runge-Kutta è zero stabile. 
-Siccome il metodo è sia consistente che zerostabile allora il metodo è consistente.]
+[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera, 
+con h che indica il passo di integrazione e la funzione Phi detta funzione 
+incremento scritta nel seguente modo. Supponendo che anche la seguente funzione
+ Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità 
+rispetto al suo secondo argomento, è possibile affermare che il metodo di 
+Runge-Kutta è zero stabile. 
+Siccome il metodo è sia consistente che zerostabile allora il metodo è
+convergente.]
  
 
 
