@@ -230,17 +230,26 @@ SLIDE 1
 Per concludere vediamo un esempio di metodo embedded.
 
 Il metodo Bogacki-Shampine è, appunto, un metodo per la soluzione numerica di equazioni differenziali ordinarie.
-È un metodo Runge-Kutta di ordine 3 con 4 fasi con la proprietà First Same As Last (FSAL), che consiste nel porre il valore della funzione al termine di una fase corretta, uguale al valore della funzione inziale nella fase successiva, in modo che utilizza circa tre valutazioni di funzione per passaggio. Si tratta di un metodo embedded 3(2), dove 3 rappresenta l’ordine p e 2 l’ordine p^, che può essere quindi utilizzato per implementare la dimensione del passo adattiva.
+È un metodo Runge-Kutta di ordine 3 con 4 fasi con la proprietà First Same As Last (FSAL), che consiste nel porre il valore della
+funzione al termine di una fase corretta, uguale al valore della funzione inziale nella fase successiva,
+in modo che utilizza circa tre valutazioni di funzione per passaggio.
+Si tratta di un metodo embedded 3(2), dove 3 rappresenta l’ordine p e 2 l’ordine p^,
+che può essere quindi utilizzato per implementare la dimensione del passo adattiva.
 Questo metodo è implementato nella funzione ode23 presente in Matlab e il suo tableau di Butcher è il seguente:
 
-DIAPOSITIVA 2
+SLIDE 2
 Un passaggio del metodo Bogacki-Shampine è dato dalle seguenti equazioni:
 
 dove un indica la soluzione numerica al momento tn,  hn è la dimensione del passo, definita da 
-hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  derivano dalla differenza tra la formula del terzo ordine utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione, anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
+hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  derivano dalla differenza tra la formula del terzo ordine
+utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione,
+anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
 
-DIAPOSITIVA 3
+SLIDE 3
 Questo grafico mostra la situazione inziale e le tre fasi svolte per ciascuna iterazione.
 Partendo dal punto (tn,un) con una pendenza iniziale k1=f(tn,un) ed un passo h (una valutazione di un buon passo, h).
-L’obiettivo e di calcolare una soluzione approssimata (un+1 in tn+1 = tn + h) che è d’accordo con la soluzione reale (u(tn+1)) entro la tolleranza specificata.
-Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
+L’obiettivo e di calcolare una soluzione approssimata (un+1 in tn+1 = tn + h) che è d’accordo con la soluzione reale (u(tn+1))
+entro la tolleranza specificata.
+Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione
+all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo
+senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
