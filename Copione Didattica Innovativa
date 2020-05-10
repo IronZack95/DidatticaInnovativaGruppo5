@@ -119,51 +119,51 @@ MICHELE
 SLIDE 1
 
 Introduciamo ora il metodo di Heun
-Il metodo di Heun è un esempio di un metodo di Runge-Kutta del secondo ordine, questo metodo è composto da due diverse equazioni che 
-agiscono in cascata:
--prima si utilizza l’equazione del predittore, la quale fornisce una prima approssimazione del punto successivo della soluzione
+Il metodo di Heun è un esempio di metodo di Runge-Kutta del secondo ordine, questo metodo è composto da due diverse equazioni che 
+agiscono una dopo l'altra:
+-prima si utilizza l’equazione del predittore, che fornisce una prima approssimazione del punto successivo della soluzione, il punto un+1
 -dopo aver fatto ciò il valore calcolato viene fornito all’equazione del correttore, la quale fornisce un’approssimazione più accurata 
- e precisa
-l'equazione del predittore è un metodo di eulero in avanti
-l'equazione del correttore è simile al metodo dei trapezi
+ e precisa del punto un+1
+si può notare come l'equazione del predittore è un metodo di eulero in avanti
+mentre l'equazione del correttore risulta nella sua applicazione simile al metodo dei trapezi
 per questo motivo il metodo di heun è noto anche come metodo di eulero migliorato o metodo dei trapezi esplicito
 possiamo vedere sulla slide il tableau di Butcher associato al metodo di Heun; si può notare come la somma delle due componenti del 
-vettore bi sia 1, quindi si può concludere che il metodo è consistente
+vettore bi sia 1, quindi possiamo concludere che il metodo di Heun è consistente
 
 SLIDE 2
 
 Procediamo ora a vedere graficamente come funziona questo metodo ed in generale come funziona un metodo di Runge-Kutta. 
-Partiamo da un problema di cauchy di cui abbiamo anche la soluzione corretta che servirà per essere confrontata con la soluzione 
-fornita dal metodo di Heun
+Partiamo da un problema di Cauchy di cui abbiamo anche la soluzione che servirà per essere confrontata con la soluzione 
+fornita dal metodo di Heun per valutarne l'efficacia e il funzionamento
 
 SLIDE 3
 
 Partiamo dal punto Un che può essere il punto fornito dalla condizione al contorno del problema oppure un punto generico calcolato al 
-passo che consideriamo un valore corretto, quindi appartenente alla soluzione.
-Calcoliamo poi il valore di f nel punto (Tn, Un), ricordando che la funzione f rappresenta la derivata alla soluzione nel punto in cui 
-viene valutata, in questo caso evidenziata nel grafico dalla retta rossa.
+passo precedente.
+Calcoliamo il valore della funzione f nel punto (Tn, Un), ricordando che la funzione f rappresenta la derivata alla soluzione nel 
+punto in cui viene valutata, in questo caso il suo valore è evidenziato nel grafico dal coefficiente angolare della retta rossa.
 
 SLIDE 4
 
-Usando l'equazione del predittore, un semplice metodo di Eulero in avanti, stimiamo il successivo punto Un+1. Si può notare come il 
-valore calcolato presenta un sostanziale scostamento rispetto al valore corretto.
+Usando l'equazione del predittore, che è un semplice metodo di Eulero in avanti, stimiamo il punto successivo Un+1. Si può notare come 
+il valore calcolato presenta un notevole scostamento rispetto alla soluzione corretto.
 
 SLIDE 5
 
-Per migliorare la nostra soluzione procediamo valutando la funzione f in (Tn+1, Un+1), il suo coefficiente angolare è rappresentato 
-dalla retta blu.
+Per migliorare la nostra soluzione procediamo valutando la funzione f in (Tn+1, Un+1), il suo valore è rappresentato dal coefficiente 
+angolare della retta blu.
 
 SLIDE 6
 
-L'equazione del correttore utilizza la retta rossa e blu per calcolare una terza retta con un coefficiente angolare pari alla media 
-dei coefficienti angolari delle due rette, ottenendo così la retta gialla.
-Usando poi lo stesso passo di integrazione h e il coefficiente angolare appena calcolato otteniamo un nuovo punto Un+1
-Si può chiaramente notare come il punto così calcolato presenti un errore molto inferiore rispetto al valore ottenuto dal metodo di 
-Eulero in avanti
-Quindi quando diciamo che il metodo di Runge-Kutta sfrutta diverse valutazioni della funzione f cosa significa praticamente? 
+L'equazione del correttore quindi utilizza la retta rossa e quella blu per calcolare una terza retta con un coefficiente angolare pari 
+alla media dei coefficienti angolari delle due rette, ottenendo così la retta gialla.
+Usando poi lo stesso passo di integrazione h e il coefficiente angolare appena calcolato restituisce un nuovo punto Un+1
+Si può vedere chiaramente dal grafico come il punto così calcolato presenti un errore molto inferiore rispetto al valore ottenuto 
+dal metodo di Eulero in avanti
+Quindi quando diciamo che il metodo di Runge-Kutta sfrutta diverse valutazioni della funzione f, questo cosa significa praticamente? 
 Significa fare quello che abbiamo fatto ora, ovvero utilizzare diversi valori della funzione f calcolati in punti strategici e di 
-questi valori farne una combinazione lineare con i coefficienti forniti dal tableau di Butcher per calcolare la pendenza della retta 
-che mi porta al punto successivo.
+questi valori ne faccio una combinazione lineare usando i coefficienti forniti dal tableau di Butcher per calcolare la pendenza 
+della retta che mi porta al punto successivo.
 
 SLIDE 7
 
@@ -171,7 +171,7 @@ Facciamo ora un confronto fra il metodo di Heun e i metodi visti in precedenza
 Il metodo di Heun essendo un metodo del secondo ordine ha un errore di troncamento globale che cresce come un o grande di h^2, mentre 
 il suo errore di troncamento locale, ovvero l'errore introdotto dal singolo passo di integrazione è un o grande di h^3. 
 Per il metodo di Eulero in avanti, metodo del primo ordine, l’errore globale di troncamento cresce come un o grande di h, mentre 
-l’errore locale come un o grande di h^2.
+l’errore locale come un o grande di h^2. Il metodo di Heun risulta quindi più preciso
 Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con gli stessi errori, 
 è la linearità del metodo di Heun, che risulta quindi più facile da implementare.
 
