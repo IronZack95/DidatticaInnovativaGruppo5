@@ -20,48 +20,53 @@ ad esempio il problema dei tre corpi
 il quale consiste nel calcolare date
 la posizione iniziale
 la massa
-la velocità
-di 3 corpi, ad esempio pianeti, soggetti all'influsso della reciproca attrazione gravitazionale l'evoluzione Futura del sistema da essi costituito
-si potrebbe pensare di utilizzare un sistema di equazioni differenziali ordinarie derivanti da le leggi del moto di Isaac Newton come avviene normalmente in presenza di due corpi
+e la velocità
+di 3 corpi, ad esempio pianeti, soggetti all'influsso della reciproca attrazione gravitazionale l'evoluzione futura del sistema da essi costituito
+si potrebbe pensare di utilizzare un sistema di equazioni differenziali ordinarie derivanti dalle leggi del moto di Isaac Newton come avviene normalmente in presenza di due corpi
 
-però si dimostra A differenza del caso di due corpi che non si conoscono soluzioni in forma chiusa
+si dimostra però che a differenza del caso di due corpi
+non si conoscono soluzioni in forma chiusa
 
 L'unico modo di approssimare al meglio il moto di tre corpi e quindi quello di utilizzare un metodo numerico
 
 SLIDE: PENDOLO SFERICO 1
 
-Ora invece concentriamoci su un altro esempio classico
-ovvero il pendolo sferico
+Un altro esempio classico invece è il pendolo sferico,
+sistema molto studiato perchè ha la peculiarità che piccolissime variazioni delle condizioni iniziali del pendolo causano grandi variazioni della dinamica del sistema
 
 SLIDE: PENDOLO SFERICO 1
 
-Allora in questo caso vogliamo studiare il moto di un Punto con coordinate X1 X2 X3
-(Che nel nostro caso è il centro di massa di un oggetto sferico di peso m )
+Quindi in questo caso vogliamo studiare il moto del centro di massa m del pendolo
+che è un Punto con coordinate X1 X2 X3
+
 soggetto alla forza di gravità e vincolato a muoversi su una superficie di forma sferica
-di equazione
-X1 quadro X2 quadro X3 quadro meno 1 = 0
-Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma compatta  descrive le accelerazioni che agiscono su questo.
+FI di X
+Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma compatta  descrive le accelerazioni che agiscono su questo Punto
 Abbiamo indicato con X punto e X due punti la derivata prima e seconda di X rispetto al tempo T
 e con H la matrice hessiana di FI
 
 SLIDE: PENDOLO SFERICO 2
 
 al fine di risolvere numericamente l'equazione riportata nella slide precedente
-Riportiamo tutto in forma NORMALE
+Riportiamo tutte le VARIABILI DI STATO del nostro sistema
+ in forma NORMALE in Y
+otteniamo un vettore di 6 componenti
+in cui le prime tre componenti saranno le nostre tre coordinate spaziali
+mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
+
 
 SLIDE: PENDOLO SFERICO 3
 
-Introduciamo ora il problema di CAUCHY, ovvero le condizioni iniziali del sistema
-
-quindi riscriviamo in una nuova incognita Y0 un vettore di 6 componenti che saranno poi le VARIABILI DI STATO del nostro sistema
-per cui le prime tre componenti saranno le nostre tre coordinate spaziali
-mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
+Inizializiamo il sistema in y0 con le seguenti condizioni iniziali
+Questo è il nostro problema di CAUCHY
 Da notare che TSPAN rappresenta l’intervallo di tempo in cui vogliamo testare il sistema
+tra 0 e 25 secondi
 
 SLIDE: MATLAB FUNCTION
 
-Operativamente scriviamo una FUNCTION MATLAB che prende in ingresso due elementi
-il tempo e il vettore di inizializzazione
+Operativamente andiamo a scrivere una FUNCTION di MATLAB che prende in ingresso due elementi
+il tempo
+e il vettore di inizializzazione
 
 SLIDE: METODO DI EULERO TEST
 
@@ -70,23 +75,19 @@ Testiamo il sistema con il metodo di Eulero
 
 Video EULERO
 
-Utilizzando il metodo di Eulero con 1000 nodi di discretizzazione
-troviamo un residuo = 1.0578.
-Mentre utilizzando 10000 nodi si ha r = 0.1111, in accordo con la
-teoria che vuole il metodo di Eulero Esplicito convergente di ordine UNO.
-
-Solo nel secondo caso la soluzione è ragionevolmente accurata.
-
 SLIDE: OBIETTIVO
 
-L’obiettivo è migliorare l’ordine di accuratezza delle funzioni ad passo se possibile
-La soluzione potrebbe quindi essere quella di implementare metodi ad un passo ma multi-stage, ovvero con più valutazioni della funzione all’interno di ogni passo
+quindi L’obiettivo ,se possibile, è  quello di migliorare l’ordine di accuratezza delle funzioni ad passo
+La soluzione potrebbe essere quella di implementare metodi ad un passo ma multi-stage, ovvero con più valutazioni della funzione all’interno di ogni passo
 
 SLIDE: RUNGE-KUTTA
 
-Metodi con queste caratteristiche rappresentano una classe di metodi più generalizzata rispetto ai metodi di Eulero e vengono chiamati metodi di Runge-Kutta
+Metodi con queste caratteristiche rappresentano una classe più generalizzata rispetto ai metodi di Eulero e vengono chiamati metodi di Runge-Kutta
 
 Poi vedremo nel dettaglio questi metodi , tra cui un caso particolare detto metodo di HEUN
+
+Da notare che i metodi di Eulero e dei Trapezi diventano casi particolari Runge-Kutta
+di ordine 1 e 2
 
 SLIDE: POSSIAMO MIGLIORARE?
 
@@ -94,14 +95,17 @@ Ma la domanda che ci facciamo ora è…
 Visto che questi metodi sono una generalizzazione di ordine più alto rispetto ai metodi di EULERO,
  restano comunque molto dispendiosi per
 l’alto costo computazionale
-e rimangono limitate ad un passo fisso
+e rimangono limitate ad un passo fisso che bisogna inserire manualmente
 
 SLIDE: METODI EMBEDDED
 
-Introduciamo così i metodi EMBEDDED o INTEGRATI un’altro tipo di metodi che sono un’utilizzo migliore dei metodi Runge-Kutta
-questi metodi utilizzano gli stessi coefficenti già calcolati ad ogni passo non solo per costruire una soluzione,
-ma due diverse
-di diverso ordine con cui stimare l’errore e successivamente adattare il passo
+Introduciamo così una seconda classe di metodi detti EMBEDDED o INTEGRATI
+che sono figli dei metodi Runge-Kutta e ne rappresentano un miglioramento
+questi metodi infatti RIUTILIZZANO gli stessi coefficienti già calcolati ad ogni passo
+non solo per costruire una PRIMA SOLUZIONE,
+ma anche una SECONDA SOLUIZIONE
+di diverso ordine con cui stimare l’errore
+e successivamente adattare il passo
 
 I PRO sono
 un costo computazionale ottimizzato
@@ -109,27 +113,28 @@ e l’adattività di passo
 
 SLIDE: METODI ODE
 
-MATLAB utilizza questi metodi in due sue note funzioni
-ODE23 e ODE45
-altrimenti dette di Bogacki-Shampigne e Dormand-Prince
+MATLAB infatti utilizza questi metodi in due sue note funzioni
+ ODE23
+ ODE45
+altrimenti dette di
+Bogacki-Shampigne
+Dormand-Prince
 
 SLIDE: METODI ODE MATLAB
 
-Testiamole!
+Bene, vediamo come si comportano con il nostro esempio del pendolo
 da notare che rispetto Eulero manca l’ultimo argomento, per cui ci aspettiamo che sia la funzione stessa a scegliere il passo in maniera Automatica
 
 VIDEO 1
 
 Ora vediamo che i metodi ODE si comportano decisamente meglio
- impostando la tolleranza relativa uguale per entrambe le funzioni
-lo si fa con il comando odeset ODESET
+
+con il comando ODESET si può impostare una tolleranza relativa uguale
+sia per ODE23 che ODE45
 
 VIDEO 2
 
 Lascio la parola a Samuele sui metodi RK
-
-
-
 
 
 SAMUDONZO
@@ -327,7 +332,7 @@ Per concludere vediamo un esempio di metodo embedded.
 
 Il metodo Bogacki-Shampine è, appunto, un metodo per la soluzione numerica di equazioni differenziali ordinarie.
 È un metodo Runge-Kutta di ordine 3 con 4 fasi con la proprietà First Same As Last (FSAL), che consiste nel porre il valore della
-funzione al termine di una fase corretta, uguale al valore della funzione inziale nella fase successiva,
+funzione al termine di un passaggio corretto, uguale al valore della funzione inziale nel passaggio successivo,
 in modo che utilizza circa tre valutazioni di funzione per passaggio.
 Si tratta di un metodo embedded 3(2), dove 3 rappresenta l’ordine p e 2 l’ordine p^,
 che può essere quindi utilizzato per implementare la dimensione del passo adattiva.
