@@ -3,36 +3,131 @@ Start Presentazione
 
 ZACK
 
-Concentriamoci ora su due dei problemi più famosi della dinamica classica
-il problema dei tre corpi e il pendolo sferico
+SLIDE: METODI DI ORDINE ELEVATO
 
-il problema dei tre corpi consiste nel calcolare date
+Buongiorno a tutti,
+oggi parleremo dei metodi ODE di ordine elevato
+
+SLIDE:DOVE SIAMO ARRIVATI
+
+Bene, a lezione abbiamo introdotto due metodi numerici, il metodo di Eulero e del metodo dei trapezi
+Il metodo di Eulero è il più basilare dei metodi espliciti per l'integrazione numerica di equazioni differenziali ordinarie, date le condizioni iniziali
+
+SLIDE: PROBLEMA DEI TRE CORPI
+
+Tra i problemi più famosi riguardanti le Equazioni Differenziali ne citiamo due
+ad esempio il problema dei tre corpi
+il quale consiste nel calcolare date
 la posizione iniziale
 la massa
 la velocità
-di 3 corpi soggetti all'influsso della reciproca attrazione gravitazionale l'evoluzione Futura del sistema da essi costituito
-si può pensare di utilizzare un sistema di equazioni differenziali ordinarie derivanti da le leggi del moto di Isaac Newton 
-come avviene normalmente in presenza di due corpi
+di 3 corpi, ad esempio pianeti, soggetti all'influsso della reciproca attrazione gravitazionale l'evoluzione Futura del sistema da essi costituito
+si potrebbe pensare di utilizzare un sistema di equazioni differenziali ordinarie derivanti da le leggi del moto di Isaac Newton come avviene normalmente in presenza di due corpi
 
- però si dimostra A differenza del caso di due corpi che non si conoscono soluzioni in forma chiusa 
-per cui noi Supponiamo che uno dei tre corpi abbia Massa decisamente superiore a quella degli altri due
-In particolare se dovessimo studiare il sistema di tre corpi come Terra Marte e sole  in particolare se dovessimo studiare 
-sistema di tre corpi come Terra Marte e il sole dovremmo ricondurci a due situazioni in cui studiamo singolarmente 
-l'influsso tra il sole e la Terra e il Sole e Marte
-sempre su quel ipotesi che il sole non risente mai dell'attrazione gravitazionale degli altri due corpi contemporaneamente
-L'unico modo di approssimare al meglio il moto di tre corpi e quindi utilizzare un metodo numerico
+però si dimostra A differenza del caso di due corpi che non si conoscono soluzioni in forma chiusa
 
-bene, Ora concentriamoci invece su un altro esempio classico ovvero il pendolo sferico
-Allora in questo caso Cosa vogliamo fare vogliamo studiare il moto di un . con coordinate X1 X2 X3 
-Che nel nostro caso è il centro di massa di un oggetto sferico di peso m soggetto la forza di gravità è 
-vincolato a muoversi su una superficie di forma sferica di equazione X 1 quadro X2 quadro X3 quadro meno 1 = 0 
-Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma compatta  descrive le accelerazioni che agiscono su questo. 
-Abbiamo indicato con XN punto e i due punti la derivata prima e seconda DX rispetto al tempo T e con h la matrice hessiana di fi
+L'unico modo di approssimare al meglio il moto di tre corpi e quindi quello di utilizzare un metodo numerico
 
-al fine di risolvere numericamente l'equazione riportata nella slide precedente Riportiamo tutto in forma normale quindi 
-riscriviamo in una nuova incognita Y un vettore di 6 componenti che saranno poi le variabili di stato del nostro sistema  
-per cui le prime tre componenti saranno le nostre tre coordinate spaziali mentre le seconde tre è componenti quindi la 
-componente 456 sono le derivate prime delle coordinate spaziali 
+SLIDE: PENDOLO SFERICO 1
+
+Ora invece concentriamoci su un altro esempio classico
+ovvero il pendolo sferico
+
+SLIDE: PENDOLO SFERICO 1
+
+Allora in questo caso vogliamo studiare il moto di un Punto con coordinate X1 X2 X3
+(Che nel nostro caso è il centro di massa di un oggetto sferico di peso m )
+soggetto alla forza di gravità e vincolato a muoversi su una superficie di forma sferica
+di equazione
+X1 quadro X2 quadro X3 quadro meno 1 = 0
+Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma compatta  descrive le accelerazioni che agiscono su questo.
+Abbiamo indicato con X punto e X due punti la derivata prima e seconda di X rispetto al tempo T
+e con H la matrice hessiana di FI
+
+SLIDE: PENDOLO SFERICO 2
+
+al fine di risolvere numericamente l'equazione riportata nella slide precedente
+Riportiamo tutto in forma NORMALE
+
+SLIDE: PENDOLO SFERICO 3
+
+Introduciamo ora il problema di CAUCHY, ovvero le condizioni iniziali del sistema
+
+quindi riscriviamo in una nuova incognita Y0 un vettore di 6 componenti che saranno poi le VARIABILI DI STATO del nostro sistema
+per cui le prime tre componenti saranno le nostre tre coordinate spaziali
+mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
+Da notare che TSPAN rappresenta l’intervallo di tempo in cui vogliamo testare il sistema
+
+SLIDE: MATLAB FUNCTION
+
+Operativamente scriviamo una FUNCTION MATLAB che prende in ingresso due elementi
+il tempo e il vettore di inizializzazione
+
+SLIDE: METODO DI EULERO TEST
+
+Testiamo il sistema con il metodo di Eulero
+(Da notare che in ingresso l’ultimo argomento NT è il numero di intervalli in cui suddividere equalmentel’intervallo TSPAN, come farebbe il comando LINSPACE)
+
+Video EULERO
+
+Utilizzando il metodo di Eulero con 1000 nodi di discretizzazione
+troviamo un residuo = 1.0578.
+Mentre utilizzando 10000 nodi si ha r = 0.1111, in accordo con la
+teoria che vuole il metodo di Eulero Esplicito convergente di ordine UNO.
+
+Solo nel secondo caso la soluzione è ragionevolmente accurata.
+
+SLIDE: OBIETTIVO
+
+L’obiettivo è migliorare l’ordine di accuratezza delle funzioni ad passo se possibile
+La soluzione potrebbe quindi essere quella di implementare metodi ad un passo ma multi-stage, ovvero con più valutazioni della funzione all’interno di ogni passo
+
+SLIDE: RUNGE-KUTTA
+
+Metodi con queste caratteristiche rappresentano una classe di metodi più generalizzata rispetto ai metodi di Eulero e vengono chiamati metodi di Runge-Kutta
+
+Poi vedremo nel dettaglio questi metodi , tra cui un caso particolare detto metodo di HEUN
+
+SLIDE: POSSIAMO MIGLIORARE?
+
+Ma la domanda che ci facciamo ora è…
+Visto che questi metodi sono una generalizzazione di ordine più alto rispetto ai metodi di EULERO,
+ restano comunque molto dispendiosi per
+l’alto costo computazionale
+e rimangono limitate ad un passo fisso
+
+SLIDE: METODI EMBEDDED
+
+Introduciamo così i metodi EMBEDDED o INTEGRATI un’altro tipo di metodi che sono un’utilizzo migliore dei metodi Runge-Kutta
+questi metodi utilizzano gli stessi coefficenti già calcolati ad ogni passo non solo per costruire una soluzione,
+ma due diverse
+di diverso ordine con cui stimare l’errore e successivamente adattare il passo
+
+I PRO sono
+un costo computazionale ottimizzato
+e l’adattività di passo
+
+SLIDE: METODI ODE
+
+MATLAB utilizza questi metodi in due sue note funzioni
+ODE23 e ODE45
+altrimenti dette di Bogacki-Shampigne e Dormand-Prince
+
+SLIDE: METODI ODE MATLAB
+
+Testiamole!
+da notare che rispetto Eulero manca l’ultimo argomento, per cui ci aspettiamo che sia la funzione stessa a scegliere il passo in maniera Automatica
+
+VIDEO 1
+
+Ora vediamo che i metodi ODE si comportano decisamente meglio
+ impostando la tolleranza relativa uguale per entrambe le funzioni
+lo si fa con il comando odeset ODESET
+
+VIDEO 2
+
+Lascio la parola a Samuele sui metodi RK
+
 
 
 
@@ -41,76 +136,76 @@ SAMUDONZO
 
 
 SLIDE 1:
-I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni 
+I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni
 della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
-In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff. 
-bi e il termine Ki 
-sono le approssimazioni delle derivate della funzione incognita in punti intermedi 
+In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff.
+bi e il termine Ki
+sono le approssimazioni delle derivate della funzione incognita in punti intermedi
 dell'intervallo di integrazione.
 
-I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente 
+I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente
 espressione:
-E quindi è possibile riscontrare una dipendenza dell'espressione geneerale dai 
+E quindi è possibile riscontrare una dipendenza dell'espressione geneerale dai
 coeff a_ij, bi, ci.
 
 SLIDE 2:
-I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono 
-un metodo di RK e questi possono essere 
+I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono
+un metodo di RK e questi possono essere
 accorpati all'interno di una tabella che prende il nome di Tabluau di Butcher.
-In figura è mostrata la disposizione di tali coefifcineti all'interno della tabella. 
+In figura è mostrata la disposizione di tali coefifcineti all'interno della tabella.
 
 SLIDE3:
-Dunque per definire ogni sigolo metodo occorre costruire il suo 
-corrispondente Tableau per rappresentarlo in forma compatta. 
+Dunque per definire ogni sigolo metodo occorre costruire il suo
+corrispondente Tableau per rappresentarlo in forma compatta.
 
-Un famoso metodo di Runge-Kutta è quello del quarto ordine, 
+Un famoso metodo di Runge-Kutta è quello del quarto ordine,
 da questo esempio è possibile notare 2 cose:
-	
-1) Gli stadi del metodo, K,1...K4 che rappresentano il calcolo della derivata 
-in punti precisi all'interno del passo, 
+
+1) Gli stadi del metodo, K,1...K4 che rappresentano il calcolo della derivata
+in punti precisi all'interno del passo,
 
 IMMAGINE SLIDE4: dall'esempio grafico è possibile notare il valore
  corrispondente dei vari termini K nei vari punti del passo di integrazione h.
-	
-	
+
+
 SLIDE5:
-2) la posizione particolare dei coefficienti nel Tableau di Butcher, 
+2) la posizione particolare dei coefficienti nel Tableau di Butcher,
  ci consentono di dedurre delle interessanti proprietà:
 
 - in primo luogo il METODO DI RISOLUZIONE, il quale può essere
-  esplicito nel caso in cui la matrice dei coeff. aij sia strettamente diagonale 
-  inferiore mentre in caso contrario, quindi una matrice generica, è detto 
-  implicito. 
-		
-->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente 
-   dai valore precedentemente calcolati. 
+  esplicito nel caso in cui la matrice dei coeff. aij sia strettamente diagonale
+  inferiore mentre in caso contrario, quindi una matrice generica, è detto
+  implicito.
+
+->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente
+   dai valore precedentemente calcolati.
    Questo metodo è meno costoso poichè sfrutta in maniera più intelligente le info
-   sulle derivate della funzione nello stesso passo d'integrazione. 
-->nel metodo IMPLICITO la soluzione numerica dipende anche da essa stessa. 
+   sulle derivate della funzione nello stesso passo d'integrazione.
+->nel metodo IMPLICITO la soluzione numerica dipende anche da essa stessa.
    Tale metodo quindi porta alla risoluzione di un'equazione NON LINEARE
    e dunque generalmente sono più costosi.
 
 
 
--la proprietà di CONSISTENZA, derivanta dalla sommatoria dei 
+-la proprietà di CONSISTENZA, derivanta dalla sommatoria dei
 coeff. b_i per i da 1 a s =1.
-	
-SLIDE6:	
 
-			
-	-ordine? 
+SLIDE6:
+
+
+	-ordine?
 	-regione di assoluta stabilità?
 
 
-[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera, 
-con h che indica il passo di integrazione e la funzione Phi detta funzione 
+[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera,
+con h che indica il passo di integrazione e la funzione Phi detta funzione
 incremento scritta nel seguente modo. Supponendo che anche la seguente funzione
- Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità 
-rispetto al suo secondo argomento, è possibile affermare che il metodo di 
-Runge-Kutta è zero stabile. 
+ Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità
+rispetto al suo secondo argomento, è possibile affermare che il metodo di
+Runge-Kutta è zero stabile.
 Siccome il metodo è sia consistente che zerostabile allora il metodo è
 convergente.]
- 
+
 
 
 
@@ -119,60 +214,60 @@ MICHELE
 SLIDE 1
 
 Introduciamo ora il metodo di Heun
-Il metodo di Heun è un esempio di metodo di Runge-Kutta del secondo ordine, questo metodo è composto da due diverse equazioni che 
+Il metodo di Heun è un esempio di metodo di Runge-Kutta del secondo ordine, questo metodo è composto da due diverse equazioni che
 agiscono una dopo l'altra:
 -prima si utilizza l’equazione del predittore, che fornisce una prima approssimazione del punto successivo della soluzione, il punto un+1
--dopo aver fatto ciò il valore calcolato viene fornito all’equazione del correttore, la quale fornisce un’approssimazione più accurata 
+-dopo aver fatto ciò il valore calcolato viene fornito all’equazione del correttore, la quale fornisce un’approssimazione più accurata
  e precisa del punto un+1
 si può notare come l'equazione del predittore è un metodo di eulero in avanti
 mentre l'equazione del correttore risulta nella sua applicazione simile al metodo dei trapezi
 per questo motivo il metodo di heun è noto anche come metodo di eulero migliorato o metodo dei trapezi esplicito
-possiamo vedere sulla slide il tableau di Butcher associato al metodo di Heun; si può notare come la somma delle due componenti del 
+possiamo vedere sulla slide il tableau di Butcher associato al metodo di Heun; si può notare come la somma delle due componenti del
 vettore bi sia 1, quindi possiamo concludere che il metodo di Heun è consistente
 
 SLIDE 2
 
-Procediamo ora a vedere graficamente come funziona questo metodo ed in generale come funziona un metodo di Runge-Kutta. 
-Partiamo da un problema di Cauchy di cui abbiamo anche la soluzione che servirà per essere confrontata con la soluzione 
+Procediamo ora a vedere graficamente come funziona questo metodo ed in generale come funziona un metodo di Runge-Kutta.
+Partiamo da un problema di Cauchy di cui abbiamo anche la soluzione che servirà per essere confrontata con la soluzione
 fornita dal metodo di Heun per valutarne l'efficacia e il funzionamento
 
 SLIDE 3
 
-Partiamo dal punto Un che può essere il punto fornito dalla condizione al contorno del problema oppure un punto generico calcolato al 
+Partiamo dal punto Un che può essere il punto fornito dalla condizione al contorno del problema oppure un punto generico calcolato al
 passo precedente.
-Calcoliamo il valore della funzione f nel punto (Tn, Un), ricordando che la funzione f rappresenta la derivata alla soluzione nel 
+Calcoliamo il valore della funzione f nel punto (Tn, Un), ricordando che la funzione f rappresenta la derivata alla soluzione nel
 punto in cui viene valutata, in questo caso il suo valore è evidenziato nel grafico dal coefficiente angolare della retta rossa.
 
 SLIDE 4
 
-Usando l'equazione del predittore, che è un semplice metodo di Eulero in avanti, stimiamo il punto successivo Un+1. Si può notare come 
+Usando l'equazione del predittore, che è un semplice metodo di Eulero in avanti, stimiamo il punto successivo Un+1. Si può notare come
 il valore calcolato presenta un notevole scostamento rispetto alla soluzione corretto.
 
 SLIDE 5
 
-Per migliorare la nostra soluzione procediamo valutando la funzione f in (Tn+1, Un+1), il suo valore è rappresentato dal coefficiente 
+Per migliorare la nostra soluzione procediamo valutando la funzione f in (Tn+1, Un+1), il suo valore è rappresentato dal coefficiente
 angolare della retta blu.
 
 SLIDE 6
 
-L'equazione del correttore quindi utilizza la retta rossa e quella blu per calcolare una terza retta con un coefficiente angolare pari 
+L'equazione del correttore quindi utilizza la retta rossa e quella blu per calcolare una terza retta con un coefficiente angolare pari
 alla media dei coefficienti angolari delle due rette, ottenendo così la retta gialla.
 Usando poi lo stesso passo di integrazione h e il coefficiente angolare appena calcolato restituisce un nuovo punto Un+1
-Si può vedere chiaramente dal grafico come il punto così calcolato presenti un errore molto inferiore rispetto al valore ottenuto 
+Si può vedere chiaramente dal grafico come il punto così calcolato presenti un errore molto inferiore rispetto al valore ottenuto
 dal metodo di Eulero in avanti
-Quindi quando diciamo che il metodo di Runge-Kutta sfrutta diverse valutazioni della funzione f, questo cosa significa praticamente? 
-Significa fare quello che abbiamo fatto ora, ovvero utilizzare diversi valori della funzione f calcolati in punti strategici e di 
-questi valori ne faccio una combinazione lineare usando i coefficienti forniti dal tableau di Butcher per calcolare la pendenza 
+Quindi quando diciamo che il metodo di Runge-Kutta sfrutta diverse valutazioni della funzione f, questo cosa significa praticamente?
+Significa fare quello che abbiamo fatto ora, ovvero utilizzare diversi valori della funzione f calcolati in punti strategici e di
+questi valori ne faccio una combinazione lineare usando i coefficienti forniti dal tableau di Butcher per calcolare la pendenza
 della retta che mi porta al punto successivo.
 
 SLIDE 7
 
 Facciamo ora un confronto fra il metodo di Heun e i metodi visti in precedenza
-Il metodo di Heun essendo un metodo del secondo ordine ha un errore di troncamento globale che cresce come un o grande di h^2, mentre 
-il suo errore di troncamento locale, ovvero l'errore introdotto dal singolo passo di integrazione è un o grande di h^3. 
-Per il metodo di Eulero in avanti, metodo del primo ordine, l’errore globale di troncamento cresce come un o grande di h, mentre 
+Il metodo di Heun essendo un metodo del secondo ordine ha un errore di troncamento globale che cresce come un o grande di h^2, mentre
+il suo errore di troncamento locale, ovvero l'errore introdotto dal singolo passo di integrazione è un o grande di h^3.
+Per il metodo di Eulero in avanti, metodo del primo ordine, l’errore globale di troncamento cresce come un o grande di h, mentre
 l’errore locale come un o grande di h^2. Il metodo di Heun risulta quindi più preciso
-Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con gli stessi errori, 
+Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con gli stessi errori,
 è la linearità del metodo di Heun, che risulta quindi più facile da implementare.
 
 
@@ -180,47 +275,47 @@ SAMU
 
 METODI EMBEDDED
 SLIDE 1
-Una particolare proprietà dei metodi di runge kutta è quella che alcuni di essi possono condividere lo stesso tableau di Butcher, in 
-particolare gli stessi coefficienti aij e ci, mentre differenti coefficienti bi. 
+Una particolare proprietà dei metodi di runge kutta è quella che alcuni di essi possono condividere lo stesso tableau di Butcher, in
+particolare gli stessi coefficienti aij e ci, mentre differenti coefficienti bi.
 Queste coppie di metodi runge kutta vengono definite embedded, ossia integrate.
-Il vantaggio principale di questa coppia embedded è che, ad un determinato passo tn di integrazione, è possibile sia conoscere oltre la 
-soluzione numerica a quel passo, anche una stima dell’errore locale. Condividendo lo stesso Tableau di Butcher, i due metodi richiedono 
-le stesse valutazioni funzionali e quindi il costo computazionale è identico a quello del calcolo di un’unica soluzione del primo metodo: 
-la seconda approssimazione è praticamente gratuita. 
-Quindi, dei due metodi, uno svolge un ruolo primario, in quanto lo stimatore dell’errore approssima il suo errore di troncamento locale 
-e la soluzione da esso prodotta è quella che viene accettata ad ogni passo; l’altro metodo, solitamente con ordine di convergenza 
+Il vantaggio principale di questa coppia embedded è che, ad un determinato passo tn di integrazione, è possibile sia conoscere oltre la
+soluzione numerica a quel passo, anche una stima dell’errore locale. Condividendo lo stesso Tableau di Butcher, i due metodi richiedono
+le stesse valutazioni funzionali e quindi il costo computazionale è identico a quello del calcolo di un’unica soluzione del primo metodo:
+la seconda approssimazione è praticamente gratuita.
+Quindi, dei due metodi, uno svolge un ruolo primario, in quanto lo stimatore dell’errore approssima il suo errore di troncamento locale
+e la soluzione da esso prodotta è quella che viene accettata ad ogni passo; l’altro metodo, solitamente con ordine di convergenza
 maggiore, invece è soltanto funzionale a stimare l’errore.
-In base alla stima dell’errore si può quindi valutare se aumentare o diminuire l’ampiezza dell’intervallo di integrazione per ottenere 
-una soluzione con un’accuratezza desiderata. 
+In base alla stima dell’errore si può quindi valutare se aumentare o diminuire l’ampiezza dell’intervallo di integrazione per ottenere
+una soluzione con un’accuratezza desiderata.
 SLIDE 2
-Ecco il tableau di una generica coppia embedded, come si può notare i due metodi condividono gli stessi coefficienti aij e ci mentre 
+Ecco il tableau di una generica coppia embedded, come si può notare i due metodi condividono gli stessi coefficienti aij e ci mentre
 diversi coefficienti bi. Le approssimazioni numeriche sono u1 e u1 cappello di ordine p e p cappello.
 Alcuni esempi di metodi embedded sono:
 *Bogacki-Shampine 3(2), utilizzata in matlab nella funzione ode23.
-*Dormand-Prince 5(4), utilizzata in matlab nella funzione ode45. 
+*Dormand-Prince 5(4), utilizzata in matlab nella funzione ode45.
 
 AUTOMATIC STEP SIZE CONTROL
 SLIDE 1
 Come anticipato in precedenza, la stima dell’errore locale ci permette di rendere il passo adattivo.
-Quindi, come implementare un codice\algoritmo che renda il passo adattivo, diminuendo il costo computazionale, ma che comunque 
+Quindi, come implementare un codice\algoritmo che renda il passo adattivo, diminuendo il costo computazionale, ma che comunque
 garantisca una tolleranza dell’errore locale scelta a priori?
-Si parta ovviamente dalla scelta di un passo iniziale h, il programma computa le 2 approssimazioni numeriche della soluzione u1 e u1 
-cappello, calcolate dai 2 metodi RK embedded. La differenza tra le approssimazioni dà una buona stima dell’errore locale. 
-E ovviamente questa stima, ossia il modulo della differenza delle 2 soluzioni della coppia embedded, deve essere minore uguale della 
-tolleranza prescelta. Come si può vedere, la tolleranza può essere formata da un termine di errore assoluto rappresentato dal fattore 
-Atol e uno relativo Rtol che invece individua l’errore relativo tra le 2 computazioni,  tra il passo precedente e quello attuale. 
-SLIDE 2	
-Prendiamo però come errore locale locale effettivo la norma 2 del rapporto tra la differenza delle 2 soluzioni numeriche all’iesimo 
-passo e la tolleranza imposta. Per rispettare la condizione della slide precedente vogliamo che l’errore sia paragonabile a 1. 
-Inoltre l’errore locale si può vedere come una costante C moltiplicata per una potenza q+1 del passo, dove q è il minor ordine tra 
-i 2 della coppia embedded, e inoltre noi vogliamo che questo errore sia uguale a 1 per trovare il passo ottimale. 
-In più, si vuole che C moltiplicata per una potenza q+1  del passo ottimale sia comparabile a 1. 
-Unendo le 2 formule, si arriva alla formula del passo ottimale che è uguale al passo iniziale moltiplicato per il reciproco dell’errore 
-elevato a 1/(q+1). Se l’errore se minore uguale a 1, la tolleranza è rispettata e la soluzione dell’iesimo passo è accettata. 
+Si parta ovviamente dalla scelta di un passo iniziale h, il programma computa le 2 approssimazioni numeriche della soluzione u1 e u1
+cappello, calcolate dai 2 metodi RK embedded. La differenza tra le approssimazioni dà una buona stima dell’errore locale.
+E ovviamente questa stima, ossia il modulo della differenza delle 2 soluzioni della coppia embedded, deve essere minore uguale della
+tolleranza prescelta. Come si può vedere, la tolleranza può essere formata da un termine di errore assoluto rappresentato dal fattore
+Atol e uno relativo Rtol che invece individua l’errore relativo tra le 2 computazioni,  tra il passo precedente e quello attuale.
+SLIDE 2
+Prendiamo però come errore locale locale effettivo la norma 2 del rapporto tra la differenza delle 2 soluzioni numeriche all’iesimo
+passo e la tolleranza imposta. Per rispettare la condizione della slide precedente vogliamo che l’errore sia paragonabile a 1.
+Inoltre l’errore locale si può vedere come una costante C moltiplicata per una potenza q+1 del passo, dove q è il minor ordine tra
+i 2 della coppia embedded, e inoltre noi vogliamo che questo errore sia uguale a 1 per trovare il passo ottimale.
+In più, si vuole che C moltiplicata per una potenza q+1  del passo ottimale sia comparabile a 1.
+Unendo le 2 formule, si arriva alla formula del passo ottimale che è uguale al passo iniziale moltiplicato per il reciproco dell’errore
+elevato a 1/(q+1). Se l’errore se minore uguale a 1, la tolleranza è rispettata e la soluzione dell’iesimo passo è accettata.
 Si procede con il calcolo del nuovo passo hnew e si calcolo la soluzione del nuovo step. Se la condizione non è verificata, la soluzione
 non viene accettata e si ripete il calcolo con il nuovo passo hnew.
-Per dare robustezza all’algoritmo, vengono introdotti fattori di sicurezza che permettono una maggiore possibilità che la condizione 
-della tolleranza sia soddisfatta, e quindi non si continui a ripetere uno step aumentando il costo computazionale,  e inoltre non si 
+Per dare robustezza all’algoritmo, vengono introdotti fattori di sicurezza che permettono una maggiore possibilità che la condizione
+della tolleranza sia soddisfatta, e quindi non si continui a ripetere uno step aumentando il costo computazionale,  e inoltre non si
 vuole che il passo cambi bruscamente per ovvi motivi di precisione.
 
 ROSE
@@ -240,7 +335,7 @@ Questo metodo è implementato nella funzione ode23 presente in Matlab e il suo t
 SLIDE 2
 Un passaggio del metodo Bogacki-Shampine è dato dalle seguenti equazioni:
 
-dove un indica la soluzione numerica al momento tn,  hn è la dimensione del passo, definita da 
+dove un indica la soluzione numerica al momento tn,  hn è la dimensione del passo, definita da
 hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  derivano dalla differenza tra la formula del terzo ordine
 utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione,
 anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
