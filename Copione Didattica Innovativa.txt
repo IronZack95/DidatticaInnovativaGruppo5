@@ -198,6 +198,7 @@ coeff. b_i per i da 1 a s =1.
   inferiore mentre in caso contrario, quindi una matrice generica, è detto
   implicito.
 
+SLIDE6:
 ->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente
    dai valore precedentemente calcolati.
    Questo metodo è meno costoso poichè sfrutta in maniera più intelligente le info
