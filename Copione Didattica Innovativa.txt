@@ -331,7 +331,7 @@ Per concludere vediamo un esempio di metodo embedded.
 
 Il metodo Bogacki-Shampine è, appunto, un metodo per la soluzione numerica di equazioni differenziali ordinarie.
 È un metodo Runge-Kutta di ordine 3 con 4 fasi con la proprietà First Same As Last (FSAL), che consiste nel porre il valore della
-funzione al termine di una fase corretta, uguale al valore della funzione inziale nella fase successiva,
+funzione al termine di un passaggio corretto, uguale al valore della funzione inziale nel passaggio successivo,
 in modo che utilizza circa tre valutazioni di funzione per passaggio.
 Si tratta di un metodo embedded 3(2), dove 3 rappresenta l’ordine p e 2 l’ordine p^,
 che può essere quindi utilizzato per implementare la dimensione del passo adattiva.
