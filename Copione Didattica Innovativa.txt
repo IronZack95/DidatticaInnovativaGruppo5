@@ -55,7 +55,7 @@ SLIDE: PENDOLO SFERICO 2
 
 al fine di risolvere numericamente l'equazione riportata nella slide precedente
 Riportiamo tutte le VARIABILI DI STATO del nostro sistema
- in forma NORMALE in Y
+in forma NORMALE in Y
 otteniamo un vettore di 6 componenti
 in cui le prime tre componenti saranno le nostre tre coordinate spaziali
 mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
