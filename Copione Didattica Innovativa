@@ -139,20 +139,20 @@ SLIDE 1:
 I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni
 della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
 In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff.
-bi e il termine Ki
-sono le approssimazioni delle derivate della funzione incognita in punti intermedi
-dell'intervallo di integrazione.
+bi e il termine Ki sono le approssimazioni delle derivate della funzione incognita
+in punti intermedi dell'intervallo di integrazione.
 
-I termini Ki sono detti anche "stadi del metodo" sono definiti dalla seguente
+Questi K sono detti anche "stadi del metodo" sono definiti dalla seguente
 espressione:
 E quindi è possibile riscontrare una dipendenza dell'espressione geneerale dai
 coeff a_ij, bi, ci.
 
 SLIDE 2:
 I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono
-un metodo di RK e questi possono essere
-accorpati all'interno di una tabella che prende il nome di Tabluau di Butcher.
-In figura è mostrata la disposizione di tali coefifcineti all'interno della tabella.
+il metodo di RK e questi possono essere accorpati all'interno di una tabella
+che prende il nome di Tabluau di Butcher.
+In figura è mostrata la disposizione di tali coefifcineti all'interno 
+della tabella.
 
 SLIDE3:
 Dunque per definire ogni sigolo metodo occorre costruire il suo
@@ -166,13 +166,19 @@ in punti precisi all'interno del passo,
 
 IMMAGINE SLIDE4: dall'esempio grafico è possibile notare il valore
  corrispondente dei vari termini K nei vari punti del passo di integrazione h.
+ Ad esempio si può notare come k_1 sia l'incremento basato sulla pendenza 
+ all'inizio dell'intervallo, k_2 quello a metà intervallo e cosi via. La combinazione 
+lineare dei K corrisponderà alla funzione incremento Phi. 
 
 
 SLIDE5:
 2) la posizione particolare dei coefficienti nel Tableau di Butcher,
- ci consentono di dedurre delle interessanti proprietà:
+   ci consentono di dedurre delle interessanti proprietà:
 
-- in primo luogo il METODO DI RISOLUZIONE, il quale può essere
+-In primo luogo la proprietà di CONSISTENZA, derivanta dalla sommatoria dei
+coeff. b_i per i da 1 a s =1.
+
+- Si puè anche dedurre il METODO DI RISOLUZIONE, il quale può essere
   esplicito nel caso in cui la matrice dei coeff. aij sia strettamente diagonale
   inferiore mentre in caso contrario, quindi una matrice generica, è detto
   implicito.
@@ -187,14 +193,9 @@ SLIDE5:
 
 
 
--la proprietà di CONSISTENZA, derivanta dalla sommatoria dei
-coeff. b_i per i da 1 a s =1.
-
-SLIDE6:
 
 
-	-ordine?
-	-regione di assoluta stabilità?
+
 
 
 [I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera,
