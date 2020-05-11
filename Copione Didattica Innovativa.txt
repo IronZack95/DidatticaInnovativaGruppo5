@@ -1,6 +1,10 @@
 
 Start Presentazione
 
+  ***********************
+TOLGO AUTOPLAY AL LETTORE VIDEO
+  ***********************
+
 ZACK
 
 SLIDE: METODI DI ORDINE ELEVATO
@@ -36,8 +40,9 @@ utilizzare un metodo numerico
 SLIDE: PENDOLO SFERICO 1
 
 Un altro esempio classico invece è il pendolo sferico,
-sistema molto studiato perchè ha la peculiarità che piccolissime
-variazioni delle condizioni iniziali del pendolo causano grandi variazioni della dinamica del sistema
+sistema molto studiato perchè ha la peculiarità per cui anche solo piccolissime
+variazioni delle condizioni iniziali del moto del pendolo
+causano grandi variazioni della dinamica del sistema
 
 SLIDE: PENDOLO SFERICO 1
 
@@ -55,8 +60,8 @@ SLIDE: PENDOLO SFERICO 2
 
 al fine di risolvere numericamente l'equazione riportata nella slide precedente
 Riportiamo tutte le VARIABILI DI STATO del nostro sistema
-in forma NORMALE in Y
-otteniamo un vettore di 6 componenti
+in forma NORMALE in un vettore Y
+che diventa quindi un vettore di 6 componenti
 in cui le prime tre componenti saranno le nostre tre coordinate spaziali
 mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
 
@@ -65,6 +70,7 @@ SLIDE: PENDOLO SFERICO 3
 
 Inizializiamo il sistema in y0 con le seguenti condizioni iniziali
 Questo è il nostro problema di CAUCHY
+in questo caso il pendolo parte in posisione orizzontale con una piccola velocità iniziale
 Da notare che TSPAN rappresenta l’intervallo di tempo in cui vogliamo testare il sistema
 tra 0 e 25 secondi
 
@@ -73,14 +79,20 @@ SLIDE: MATLAB FUNCTION
 Operativamente andiamo a scrivere una FUNCTION di MATLAB che prende in ingresso due elementi
 il tempo
 e il vettore di inizializzazione
+mentre F come output rapprensenta il nuovo vettore Y
 
 SLIDE: METODO DI EULERO TEST
 
-Testiamo il sistema con il metodo di Eulero
+Testiamo quindi il sistema con il metodo di Eulero
 (Da notare che in ingresso l’ultimo argomento NT è il numero di intervalli
 in cui suddividere equalmente l’intervallo TSPAN, come farebbe il comando LINSPACE)
 
 Video EULERO
+
+primo caso Mille nodi o passi di discretizzazione
+secondo Dieci Mila nodi
+
+(stima del Residuo)
 
 SLIDE: OBIETTIVO
 
@@ -104,7 +116,7 @@ Ma la domanda che ci facciamo ora è…
 Visto che questi metodi sono una generalizzazione di ordine più alto rispetto ai metodi di EULERO,
  restano comunque molto dispendiosi per
 l’alto costo computazionale
-e rimangono limitate ad un passo fisso che bisogna inserire manualmente
+e per il passo fisso che bisogna inserire manualmente
 
 SLIDE: METODI EMBEDDED
 
