@@ -1,8 +1,8 @@
 clc;                                               % Clears the screen
 clear all;
 close all;
-tspan = [0,pi];
 
+tspan = [0,pi];
 h=0.01*tspan(2);        % frazione decimale di pi-->100 passi 
 t = tspan(1):h:tspan(2);                                        
 i = zeros(1,length(t)); 
@@ -34,7 +34,7 @@ for i=1:(length(t)-1)                              % calculation loop
     
 end
 
-plot (t, x(t), t, xp(t), t, y1, 'x', t, y2, 'o')
+
 % Linea continua soluzione esatta, x e o soluzione numerica
 
 subplot(2,2,1)
