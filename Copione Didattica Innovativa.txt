@@ -140,9 +140,7 @@ Lascio la parola a Samuele sui metodi RK
 SAMUDONZO
 
 
-SLIDE 1:
-I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni
-della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
+SLIDE 1: METODO RK
 I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti 
 valutazioni della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
 In particolare è possibile esprimere u_n+1 secondo la prima formula che si 
@@ -150,49 +148,55 @@ può trovare, dove i coeff. bi e il termine Ki sono le approssimazioni
 delle derivate della funzione incognita in punti intermedi dell'intervallo di 
 integrazione.
 
-Questi K sono detti anche "stadi del metodo" sono definiti dalla seguente
-espressione:
-E quindi è possibile riscontrare una dipendenza dell'espressione geneerale dai
-coeff a_ij, bi, ci.
+Questi K sono detti anche "stadi del metodo" sono definiti dall'espressione
+riportata dalla seconda formula.
+Dunque è possibile riscontrare una dipendenza dell'espressione generale di questi 
+metodi dai coeff a_ij, bi, ci.
 
-SLIDE 2:
+SLIDE 2: TABLEAU
 I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè rappresentano 
-un metodo di Runge-Kutta e per distinguere un metodo dall'altro basta scriverne i coefficienti 
-Questi, in più, possono essere accorpati all'interno di una tabella
-che prende il nome di Tabluau di Butcher.
+il singolo metodo di Runge-Kutta e per distinguere un metodo dall'altro basta 
+scriverne i coefficienti. Questi, in più, possono essere accorpati all'interno
+di una tabella che prende il nome di Tabluau di Butcher.
 In figura è mostrata la disposizione di tali coefifcineti all'interno 
 della tabella.
 
-SLIDE3:
+SLIDE3: ESEMPIO ORDINE 4
 Dunque per definire ogni sigolo metodo occorre costruire il suo
 corrispondente Tableau per rappresentarlo in forma compatta.
 
 Un famoso metodo di Runge-Kutta è quello del quarto ordine,
-da questo importante esempio è possibile notare 2 cose:
+da questo importante esempio è possibile spiegare 2 cose:
 
+
+SLIDE4:STADI METODO
 1) in primis Gli stadi del metodo. infatti U_n+1 è definito come u_n più 
 la media pesata di 4 incrementi che sono definiti come K1,K2,k3,k4.
 Essi rappresentano il calcolo della derivata in punti precisi all'interno 
-del passo, e quindi corrispondo a una stima della pendenza di f. Ad esempio:
+del passo, e quindi corrispondo a una stima della pendenza di f, 
+la funzione incognita. Ad esempio:
 K1 è l'icremento basato sulla pendenza della funzine all'inizio 
 dell'intervallo, quindi in t_n.
 K2 è l'incremento basato sulla pendenza alla metà dell'intervallo, utilizzando
 il dato calcolato in precedenza K1. infatti nella sua espressione a t_n viene 
-sommato metà del passo di integrazione e  vi è la dipendenza da K1.  
+sommato metà del passo di integrazione e  vi è la dipendenza da K1.
+
+SLIDE5:STADI DEL METODO  
 K3 è un altro incremento basato sulla pendenza alla metà dell'intervallo, 
-utilizzando K2 e K4 è l'incremento basato sulle alla fine dell'intervallo,
+utilizzando K2 e K4 è l'incremento basato sulla pendenza alla fine dell'intervallo,
 e questo lo si vede perchè lo si calcola in t_n+1, utilizzando k3. 
   
 
-SLIDE 5:
-2) la seconda cosa che si mostra nell'esempio è l'utilità del Tableau di 
-Butcher. Prima di tutto permette di implementare immediatamente un qualunque 
+SLIDE 6: UTILITA' TABLEAU
+2) la seconda cosa che si mostra dall'esempio è l'utilità del Tableau di 
+Butcher. Prima di tutto perchè permette di implementare immediatamente un qualunque 
 Metodo di Runge-Kutta, raggruppando i coefficienti al suo interno. E poi 
 permette di verificare "a occhio" alcune proprietà che possono essere 
 un po' macchinose, limitandomi a fare semplicemente una somma per righe o 
 per colonne.
 
--Un esempio di questa applicazione è il riconoscimento della proprietà di CONSISTENZA, derivanta dalla sommatoria dei
+-Un esempio di questa applicazione è il riconoscimento della proprietà 
+di CONSISTENZA, derivanta dalla sommatoria dei
 coeff. b_i, per i da 1 a s =1. ricordo che i coefficienti b sono quelli che 
 moltiplicano i termini K nell'espressione generale e vengono rappresentati 
 nel Tableau in basso a destra.
@@ -202,7 +206,6 @@ nel Tableau in basso a destra.
   sia strettamente diagonale inferiore mentre in caso contrario,
   quindi una matrice generica, è detto implicito.
 
-SLIDE6:
 ->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente
    dai valore precedentemente calcolati.
    Questo metodo è meno costoso poichè sfrutta in maniera più
@@ -210,10 +213,6 @@ SLIDE6:
    passo d'integrazione.
 
 ora lascio la parola al mio collega Michele.
-
-
-
-
 
 
 
@@ -226,7 +225,6 @@ rispetto al suo secondo argomento, è possibile affermare che il metodo di
 Runge-Kutta è zero stabile.
 Siccome il metodo è sia consistente che zerostabile allora il metodo è
 convergente.]
-
 
 
 
