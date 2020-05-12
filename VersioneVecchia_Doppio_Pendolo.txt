@@ -1,0 +1,165 @@
+\begin{frame}{Problema dei Tre Corpi}
+
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{800px-Lagrange_points2.svg.png}
+    \caption{Punti di Lagrange nelle orbite planetarie}
+    \label{fig:figure}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Pendolo Sferico}
+    Vediamo un esempio non elementare di un sistema di equazioni differenziali ordinarie
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{PendoloSferico2.JPG}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Pendolo Sferico}
+    Il moto di un punto $x(t)=(x_1(t),x_2(t),x_3(t))^T$ di massa \emph{m} soggetto alla forza di gravità $F=(0,0,-\emph{mg})^T$ e vincolato a muoversi sulla superficie sferica di equazione $\Phi(x)= x_1^2+x_2^2+x_3^2-1 = 0$ è descritto dal seguente sistema di equazioni differenziali ordinarie\\
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{PendoloSferico1.JPG}
+    \end{figure}
+    abbiamo indicato $\Dot{x}$ e $\Ddot{x}$  la derivata prima e seconda $x(t)$ rispetto a \emph{t}, e con H la matrice Hessiana di $\Phi(x)$
+\end{frame}
+
+\begin{frame}{Pendolo Sferico}
+Riscriviamo il sistema in forma \emph{Normale}, nella nuova incognita y:
+\begin{align*}
+    y_i& = x_i\\
+    y_{i+3}& = \Dot{x_i}
+\end{align*}
+    per i = 1,2,3 e
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{PendoloSferico3.JPG}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Pendolo Sferico}
+    Otteniamo per i = 1,2,3
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{PendoloSferico4.JPG}
+    \end{figure}
+    Come condizione iniziale poniamo il seguente vettore\\
+    \begin{align*}
+        y0& = [0,1,0,.8,0,1.2]\\
+        tspan& = [0,25]
+    \end{align*}
+
+\end{frame}
+
+\begin{frame}{Pendolo Sferico}
+    E' necessario definire una \emph{user-defined function} \textbf{fvinc.m} nel seguente modo:\\
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{PendoloSferico5.JPG}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Metodo di Eulero - Test}
+    Mettiamo alla prova il metodo di Eulero Esplicito:\\\
+
+    \begin{itemize}
+    \item   $[t,y] &= feuler(@fvinc,tspan,y0,nt)$
+    \end{itemize}\\\
+
+    Possiamo avere l'idea dell'accuratezza osservando che nella soluzione esatta il residuo soddisfa $r(y) = \abs{y_1^2+y_2^2+y_3^2-1} = 0$, stimiamo quindi il residuo $r(y_n)$ al tempo $t_n$ al variare del numero n di nodi
+
+\end{frame}
+
+\begin{frame}{Metodo di Eulero - Risultato}
+\textbf{Risultato}: \\\
+    Utilizzando il metodo di Eulero con 1000 nodi di discretizzazione troviamo r = 1.0578.\\ Mentre utilizzando 10000 nodi si ha r = 0.1111, in accordo con la teoria che vuole il metodo di Eulero Esplicito convergente di ordine 1.\\\
+    Solo nel secondo caso la soluzione è ragionevolmente accurata.
+\end{frame}
+
+
+\begin{frame}{Obiettivo}
+\textbf{Obiettivo}:\newline
+Migliorare l'ordine di \textbf{accuratezza} delle funzioni ad un passo.\newline
+\newline
+\textbf{Soluzione}:\\
+Implementare metodi ad un passo \textbf{n-stage}.\newline
+Ovvero con \textbf{n} valutazioni della funzione all'interno di ogni passo.
+\end{frame}
+
+\begin{frame}{Metodi di Runge-Kutta}
+    Metodi \textbf{1-step} e \textbf{multi-stage} sono detti di  \textbf{Runge-Kutta}\newline
+    \newline
+    \textbf{Case Study}:
+    Metodo di Heun\newline
+    \newline
+    \newline
+    NB: i metodi di Eulero sono casi particolari RK di ordine 1, mentre il metodo dei Trapezi è di ordine 2.\\
+\end{frame}
+
+\begin{frame}{Possiamo migliorare?}
+    Come possiamo risolvere i restanti problemi?\newline
+    \begin{itemize}
+    \item Alto costo computazionale\\
+    \item Passo fisso
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Metodi Embedded}
+    Metodo:
+    \begin{enumerate}
+    \item Costruisco \textbf{2 soluzioni} con ordine di accuratezza diverse
+    \item Utilizzo la differenza tra le due per stimare \textbf{l'errore}
+    \item \textbf{Adatto} il passo\newline
+    \end{enumerate}
+
+    \newline
+    Pro:
+    \begin{itemize}
+    \item Costo computazionale ottimizzato
+    \item Passo adattivo
+    \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Metodi ODE}
+    \textbf{ode23}\\
+    Metodo esplicito Runge-Kutta di \textbf{Shampine-Bogacki}\\
+    Utilizza \textbf{3 stage} per calcolare una soluzione con accuratezza di ordine 2 e una di ordine 3.\\
+    Usa la differenza tra le due per stimare l’errore della soluzione di \textbf{ordine 3}.\newline
+    \newline
+    \textbf{ode45}\\
+    Metodo esplicito Runge-Kutta di \textbf{Dormand-Prince}\\
+    Utilizza \textbf{6 stage} per calcolare una soluzione con accuratezza di ordine 4 e una di ordine 5.\\
+    Usa la differenza tra le due per stimare l’errore della soluzione di \textbf{ordine 5}.
+
+\end{frame}
+
+
+\begin{frame}{Metodi ODE - MATLAB}
+
+    Confrontiamo i seguenti metodi:\newline
+    \newline
+    \begin{itemize}
+    \item $[t1,y1] &= ode23(@fvinc,tspan,y0)$                  &Runge-Kutta\\
+    \item $[t2,y2] &= ode45(@fvinc,tspan,y0)$               &Runge-Kutta
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Metodi ODE - Istruzioni per l'uso}
+
+    Diminuendo la tolleranza relativa di \textbf{Ode45}
+    \begin{align*}
+        options&= odeset('RelTol',1.e-4)
+    \end{align*}
+    Si trovano risultati confrontabili con Ode23.
+
+\end{frame}

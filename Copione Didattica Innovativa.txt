@@ -1,6 +1,10 @@
 
 Start Presentazione
 
+  ***********************
+TOLGO AUTOPLAY AL LETTORE VIDEO
+  ***********************
+
 ZACK
 
 SLIDE: METODI DI ORDINE ELEVATO
@@ -11,7 +15,8 @@ oggi parleremo dei metodi ODE di ordine elevato
 SLIDE:DOVE SIAMO ARRIVATI
 
 Bene, a lezione abbiamo introdotto due metodi numerici, il metodo di Eulero e del metodo dei trapezi
-Il metodo di Eulero è il più basilare dei metodi espliciti per l'integrazione numerica di equazioni differenziali ordinarie, date le condizioni iniziali
+Il metodo di Eulero è il più basilare dei metodi
+espliciti per l'integrazione numerica di equazioni differenziali ordinarie, date le condizioni iniziali
 
 SLIDE: PROBLEMA DEI TRE CORPI
 
@@ -21,18 +26,23 @@ il quale consiste nel calcolare date
 la posizione iniziale
 la massa
 e la velocità
-di 3 corpi, ad esempio pianeti, soggetti all'influsso della reciproca attrazione gravitazionale l'evoluzione futura del sistema da essi costituito
-si potrebbe pensare di utilizzare un sistema di equazioni differenziali ordinarie derivanti dalle leggi del moto di Isaac Newton come avviene normalmente in presenza di due corpi
+di 3 corpi, ad esempio pianeti, soggetti all'influsso della reciproca attrazione
+gravitazionale l'evoluzione futura del sistema da essi costituito
+si potrebbe pensare di utilizzare un sistema di equazioni differenziali ordinarie
+derivanti dalle leggi del moto di Isaac Newton come avviene normalmente in presenza di due corpi
 
 si dimostra però che a differenza del caso di due corpi
 non si conoscono soluzioni in forma chiusa
 
-L'unico modo di approssimare al meglio il moto di tre corpi e quindi quello di utilizzare un metodo numerico
+L'unico modo di approssimare al meglio il moto di tre corpi e quindi quello di
+utilizzare un metodo numerico
 
 SLIDE: PENDOLO SFERICO 1
 
 Un altro esempio classico invece è il pendolo sferico,
-sistema molto studiato perchè ha la peculiarità che piccolissime variazioni delle condizioni iniziali del pendolo causano grandi variazioni della dinamica del sistema
+sistema molto studiato perchè ha la peculiarità per cui anche solo piccolissime
+variazioni delle condizioni iniziali del moto del pendolo
+causano grandi variazioni della dinamica del sistema
 
 SLIDE: PENDOLO SFERICO 1
 
@@ -41,7 +51,8 @@ che è un Punto con coordinate X1 X2 X3
 
 soggetto alla forza di gravità e vincolato a muoversi su una superficie di forma sferica
 FI di X
-Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma compatta  descrive le accelerazioni che agiscono su questo Punto
+Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma
+compatta  descrive le accelerazioni che agiscono su questo Punto
 Abbiamo indicato con X punto e X due punti la derivata prima e seconda di X rispetto al tempo T
 e con H la matrice hessiana di FI
 
@@ -49,8 +60,8 @@ SLIDE: PENDOLO SFERICO 2
 
 al fine di risolvere numericamente l'equazione riportata nella slide precedente
 Riportiamo tutte le VARIABILI DI STATO del nostro sistema
- in forma NORMALE in Y
-otteniamo un vettore di 6 componenti
+in forma NORMALE in un vettore Y
+che diventa quindi un vettore di 6 componenti
 in cui le prime tre componenti saranno le nostre tre coordinate spaziali
 mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
 
@@ -59,6 +70,7 @@ SLIDE: PENDOLO SFERICO 3
 
 Inizializiamo il sistema in y0 con le seguenti condizioni iniziali
 Questo è il nostro problema di CAUCHY
+in questo caso il pendolo parte in posisione orizzontale con una piccola velocità iniziale
 Da notare che TSPAN rappresenta l’intervallo di tempo in cui vogliamo testare il sistema
 tra 0 e 25 secondi
 
@@ -67,22 +79,31 @@ SLIDE: MATLAB FUNCTION
 Operativamente andiamo a scrivere una FUNCTION di MATLAB che prende in ingresso due elementi
 il tempo
 e il vettore di inizializzazione
+mentre F come output rapprensenta il nuovo vettore Y
 
 SLIDE: METODO DI EULERO TEST
 
-Testiamo il sistema con il metodo di Eulero
-(Da notare che in ingresso l’ultimo argomento NT è il numero di intervalli in cui suddividere equalmentel’intervallo TSPAN, come farebbe il comando LINSPACE)
+Testiamo quindi il sistema con il metodo di Eulero
+(Da notare che in ingresso l’ultimo argomento NT è il numero di intervalli
+in cui suddividere equalmente l’intervallo TSPAN, come farebbe il comando LINSPACE)
 
 Video EULERO
+
+primo caso Mille nodi o passi di discretizzazione
+secondo Dieci Mila nodi
+
+(stima del Residuo)
 
 SLIDE: OBIETTIVO
 
 quindi L’obiettivo ,se possibile, è  quello di migliorare l’ordine di accuratezza delle funzioni ad passo
-La soluzione potrebbe essere quella di implementare metodi ad un passo ma multi-stage, ovvero con più valutazioni della funzione all’interno di ogni passo
+La soluzione potrebbe essere quella di implementare metodi ad un passo ma multi-stage,
+ovvero con più valutazioni della funzione all’interno di ogni passo
 
 SLIDE: RUNGE-KUTTA
 
-Metodi con queste caratteristiche rappresentano una classe più generalizzata rispetto ai metodi di Eulero e vengono chiamati metodi di Runge-Kutta
+Metodi con queste caratteristiche rappresentano una classe più generalizzata
+rispetto ai metodi di Eulero e vengono chiamati metodi di Runge-Kutta
 
 Poi vedremo nel dettaglio questi metodi , tra cui un caso particolare detto metodo di HEUN
 
@@ -95,7 +116,7 @@ Ma la domanda che ci facciamo ora è…
 Visto che questi metodi sono una generalizzazione di ordine più alto rispetto ai metodi di EULERO,
  restano comunque molto dispendiosi per
 l’alto costo computazionale
-e rimangono limitate ad un passo fisso che bisogna inserire manualmente
+e per il passo fisso che bisogna inserire manualmente
 
 SLIDE: METODI EMBEDDED
 
@@ -123,7 +144,8 @@ Dormand-Prince
 SLIDE: METODI ODE MATLAB
 
 Bene, vediamo come si comportano con il nostro esempio del pendolo
-da notare che rispetto Eulero manca l’ultimo argomento, per cui ci aspettiamo che sia la funzione stessa a scegliere il passo in maniera Automatica
+da notare che rispetto Eulero manca l’ultimo argomento,
+per cui ci aspettiamo che sia la funzione stessa a scegliere il passo in maniera Automatica
 
 VIDEO 1
 
@@ -159,7 +181,7 @@ il singolo metodo di Runge-Kutta e per distinguere un metodo dall'altro basta
 scriverne i coefficienti. Questi, in più, possono essere accorpati all'interno
 di una tabella che prende il nome di Tabluau di Butcher.
 In figura è mostrata la disposizione di tali coefifcineti all'interno 
-della tabella.
+
 
 SLIDE3: ESEMPIO ORDINE 4
 Dunque per definire ogni sigolo metodo occorre costruire il suo
@@ -201,10 +223,13 @@ coeff. b_i, per i da 1 a s =1. ricordo che i coefficienti b sono quelli che
 moltiplicano i termini K nell'espressione generale e vengono rappresentati 
 nel Tableau in basso a destra.
 
+
+SLIDE7:METODO ESPLICITO
 - Si può anche riconoscere il METODO DI RISOLUZIONE, il quale può essere
   esplicito nel caso in cui dal Tableau la matrice dei coeff. aij 
   sia strettamente diagonale inferiore mentre in caso contrario,
   quindi una matrice generica, è detto implicito.
+
 
 ->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente
    dai valore precedentemente calcolati.
@@ -352,6 +377,8 @@ che può essere quindi utilizzato per implementare la dimensione del passo adatt
 Questo metodo è implementato nella funzione ode23 presente in Matlab e il suo tableau di Butcher è il seguente:
 
 SLIDE 2
+L’obiettivo e di calcolare una soluzione approssimata (un+1 in tn+1 = tn + h) che è d’accordo con la soluzione reale (u(tn+1)) entro la tolleranza specificata.
+
 Un passaggio del metodo Bogacki-Shampine è dato dalle seguenti equazioni:
 
 dove un indica la soluzione numerica al momento tn,  hn è la dimensione del passo, definita da
@@ -359,11 +386,5 @@ hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  deriva
 utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione,
 anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
 
-SLIDE 3
-Questo grafico mostra la situazione inziale e le tre fasi svolte per ciascuna iterazione.
-Partendo dal punto (tn,un) con una pendenza iniziale k1=f(tn,un) ed un passo h (una valutazione di un buon passo, h).
-L’obiettivo e di calcolare una soluzione approssimata (un+1 in tn+1 = tn + h) che è d’accordo con la soluzione reale (u(tn+1))
-entro la tolleranza specificata.
-Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione
-all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo
-senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
+Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
+Con questo esempio si conclude la presentazione dei metodi di runge-kutta per la soluzione delle equazioni differenziali ordinarie.
