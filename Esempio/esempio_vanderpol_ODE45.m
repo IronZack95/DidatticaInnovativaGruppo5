@@ -47,7 +47,7 @@ plot (t, x(t),'g', t, xp(t),'r', t, y(:, 1), 'xb', t, y(:, 2), 'or')
 title (['Soluzione ODE45 con n = ',int2str(length(t))])
 xlabel('Time t');
 ylabel('Solution y');
-legend('x(t)','dx(t)/dt')
+% legend('x(t)','dx(t)/dt')
 axis([tspan(1) tspan(2) -inf inf])
 
 subplot(2,2,2)
