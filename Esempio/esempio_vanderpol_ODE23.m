@@ -31,7 +31,7 @@ clc
 clear all
 close all
 figure
-tspan = [0;pi];
+tspan = [0,pi];
 
 x   = @(t) sin (t) .^ 4;
 xp  = @(t) 4 * sin (t) .^ 3 .* cos (t);

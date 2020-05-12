@@ -32,7 +32,7 @@ clear all
 close all
 figure
 
-tspan = [0;pi];
+tspan = [0,pi];
 passi = 50;
 
 x   = @(t) sin (t) .^ 4;
