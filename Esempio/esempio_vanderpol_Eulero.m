@@ -45,8 +45,8 @@ vdp = @(t, y) [y(2); mu*(1-y(1)^2)*y(2)-y(1)+f(t)];
 [t, y] = feuler (vdp, tspan, [x(0); xp(0)],passi);
 
 subplot(2,2,1)
-plot (t, x(t),'g', t, xp(t),'m', t, y(:, 1), 'xb', t, y(:, 2), 'or')
-title ('Soluzione con Eulero')
+plot (t, x(t),'g', t, xp(t),'r', t, y(:, 1), 'xb', t, y(:, 2), 'or')
+title (['Soluzione con Eulero con n = ',int2str(passi)])
 xlabel('Time t');
 ylabel('Solution y');
 legend('x(t)','dx(t)/dt')
