@@ -162,66 +162,82 @@ Lascio la parola a Samuele sui metodi RK
 SAMUDONZO
 
 
-SLIDE 1:
-I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti valutazioni
-della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
-In particolare è possibile esprimere u_n+1 secondo questa formula dove i coeff.
-bi e il termine Ki sono le approssimazioni delle derivate della funzione incognita
-in punti intermedi dell'intervallo di integrazione.
+SLIDE 1: METODO RK
+I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti 
+valutazioni della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
+In particolare è possibile esprimere u_n+1 secondo la prima formula che si 
+può trovare, dove i coeff. bi e il termine Ki sono le approssimazioni 
+delle derivate della funzione incognita in punti intermedi dell'intervallo di 
+integrazione.
 
-Questi K sono detti anche "stadi del metodo" sono definiti dalla seguente
-espressione:
-E quindi è possibile riscontrare una dipendenza dell'espressione geneerale dai
-coeff a_ij, bi, ci.
+Questi K sono detti anche "stadi del metodo" sono definiti dall'espressione
+riportata dalla seconda formula.
+Dunque è possibile riscontrare una dipendenza dell'espressione generale di questi 
+metodi dai coeff a_ij, bi, ci.
 
-SLIDE 2:
-I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè definiscono
-il metodo di RK e questi possono essere accorpati all'interno di una tabella
-che prende il nome di Tabluau di Butcher.
-In figura è mostrata la disposizione di tali coefifcineti all'interno
-della tabella.
+SLIDE 2: TABLEAU
+I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè rappresentano 
+il singolo metodo di Runge-Kutta e per distinguere un metodo dall'altro basta 
+scriverne i coefficienti. Questi, in più, possono essere accorpati all'interno
+di una tabella che prende il nome di Tabluau di Butcher.
+In figura è mostrata la disposizione di tali coefifcineti all'interno 
 
-SLIDE3:
+
+SLIDE3: ESEMPIO ORDINE 4
 Dunque per definire ogni sigolo metodo occorre costruire il suo
 corrispondente Tableau per rappresentarlo in forma compatta.
 
 Un famoso metodo di Runge-Kutta è quello del quarto ordine,
-da questo esempio è possibile notare 2 cose:
-
-1) Gli stadi del metodo, K,1...K4 che rappresentano il calcolo della derivata
-in punti precisi all'interno del passo,
-
-IMMAGINE SLIDE4: dall'esempio grafico è possibile notare il valore
- corrispondente dei vari termini K nei vari punti del passo di integrazione h.
- Ad esempio si può notare come k_1 sia l'incremento basato sulla pendenza
- all'inizio dell'intervallo, k_2 quello a metà intervallo e cosi via. La combinazione
-lineare dei K corrisponderà alla funzione incremento Phi.
+da questo importante esempio è possibile spiegare 2 cose:
 
 
-SLIDE5:
-2) la posizione particolare dei coefficienti nel Tableau di Butcher,
-   ci consentono di dedurre delle interessanti proprietà:
+SLIDE4:STADI METODO
+1) in primis Gli stadi del metodo. infatti U_n+1 è definito come u_n più 
+la media pesata di 4 incrementi che sono definiti come K1,K2,k3,k4.
+Essi rappresentano il calcolo della derivata in punti precisi all'interno 
+del passo, e quindi corrispondo a una stima della pendenza di f, 
+la funzione incognita. Ad esempio:
+K1 è l'icremento basato sulla pendenza della funzine all'inizio 
+dell'intervallo, quindi in t_n.
+K2 è l'incremento basato sulla pendenza alla metà dell'intervallo, utilizzando
+il dato calcolato in precedenza K1. infatti nella sua espressione a t_n viene 
+sommato metà del passo di integrazione e  vi è la dipendenza da K1.
 
--In primo luogo la proprietà di CONSISTENZA, derivanta dalla sommatoria dei
-coeff. b_i per i da 1 a s =1.
+SLIDE5:STADI DEL METODO  
+K3 è un altro incremento basato sulla pendenza alla metà dell'intervallo, 
+utilizzando K2 e K4 è l'incremento basato sulla pendenza alla fine dell'intervallo,
+e questo lo si vede perchè lo si calcola in t_n+1, utilizzando k3. 
+  
 
-- Si puè anche dedurre il METODO DI RISOLUZIONE, il quale può essere
-  esplicito nel caso in cui la matrice dei coeff. aij sia strettamente diagonale
-  inferiore mentre in caso contrario, quindi una matrice generica, è detto
-  implicito.
+SLIDE 6: UTILITA' TABLEAU
+2) la seconda cosa che si mostra dall'esempio è l'utilità del Tableau di 
+Butcher. Prima di tutto perchè permette di implementare immediatamente un qualunque 
+Metodo di Runge-Kutta, raggruppando i coefficienti al suo interno. E poi 
+permette di verificare "a occhio" alcune proprietà che possono essere 
+un po' macchinose, limitandomi a fare semplicemente una somma per righe o 
+per colonne.
 
-SLIDE6:
+-Un esempio di questa applicazione è il riconoscimento della proprietà 
+di CONSISTENZA, derivanta dalla sommatoria dei
+coeff. b_i, per i da 1 a s =1. ricordo che i coefficienti b sono quelli che 
+moltiplicano i termini K nell'espressione generale e vengono rappresentati 
+nel Tableau in basso a destra.
+
+
+SLIDE7:METODO ESPLICITO
+- Si può anche riconoscere il METODO DI RISOLUZIONE, il quale può essere
+  esplicito nel caso in cui dal Tableau la matrice dei coeff. aij 
+  sia strettamente diagonale inferiore mentre in caso contrario,
+  quindi una matrice generica, è detto implicito.
+
+
 ->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente
    dai valore precedentemente calcolati.
-   Questo metodo è meno costoso poichè sfrutta in maniera più intelligente le info
-   sulle derivate della funzione nello stesso passo d'integrazione.
-->nel metodo IMPLICITO la soluzione numerica dipende anche da essa stessa.
-   Tale metodo quindi porta alla risoluzione di un'equazione NON LINEARE
-   e dunque generalmente sono più costosi.
+   Questo metodo è meno costoso poichè sfrutta in maniera più
+   intelligente le info sulle derivate della funzione nello stesso 
+   passo d'integrazione.
 
-
-
-
+ora lascio la parola al mio collega Michele.
 
 
 
@@ -234,7 +250,6 @@ rispetto al suo secondo argomento, è possibile affermare che il metodo di
 Runge-Kutta è zero stabile.
 Siccome il metodo è sia consistente che zerostabile allora il metodo è
 convergente.]
-
 
 
 
