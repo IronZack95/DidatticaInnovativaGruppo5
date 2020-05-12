@@ -33,7 +33,7 @@ close all
 figure
 
 tspan = [0,pi];
-passi = 50;
+passi = 25;
 
 x   = @(t) sin (t) .^ 4;
 xp  = @(t) 4 * sin (t) .^ 3 .* cos (t);
@@ -49,7 +49,7 @@ plot (t, x(t),'g', t, xp(t),'r', t, y(:, 1), 'xb', t, y(:, 2), 'or')
 title (['Soluzione Eulero con n = ',int2str(passi)])
 xlabel('Time t');
 ylabel('Solution y');
-legend('x(t)','dx(t)/dt')
+% legend('x(t)','dx(t)/dt')
 axis([tspan(1) tspan(2) -inf inf])
 
 subplot(2,2,2)
@@ -68,4 +68,4 @@ subplot(2,2,3)
 semilogy (t(2:end), diff (t))
 title ('passo adattivo')
 xlabel('Time t');
-axis([tspan(1) tspan(2) tspan(2)/50-0.01 tspan(2)/50+0.01])
+axis([tspan(1) tspan(2) tspan(2)/passi-0.01 tspan(2)/passi+0.01])
