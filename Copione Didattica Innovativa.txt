@@ -165,82 +165,82 @@ SAMUDONZO
 SLIDE 1: METODO RK
 I metodi di Runge-Kutta sono metodi a un passo che richiedono differenti 
 valutazioni della funzione f(t,y) in ciascun intervallo di [t_n, t_n+1].
-In particolare è possibile esprimere u_n+1 secondo la prima formula che si 
-può trovare, dove i coeff. bi e il termine Ki sono le approssimazioni 
+In particolare è possibile esprimere u_n+1 secondo la prima formula riportata qua sotto, 
+dove i termine Ki sono le approssimazioni 
 delle derivate della funzione incognita in punti intermedi dell'intervallo di 
 integrazione.
 
-Questi K sono detti anche "stadi del metodo" sono definiti dall'espressione
+Questi K, detti anche "stadi del metodo", sono definiti dall'espressione
 riportata dalla seconda formula.
 Dunque è possibile riscontrare una dipendenza dell'espressione generale di questi 
-metodi dai coeff a_ij, bi, ci.
+metodi dai coefficienti a_ij, bi, ci.
 
 SLIDE 2: TABLEAU
-I coefficienti a_ij, bi, ci giocano un ruolo fondamentale perchè rappresentano 
-il singolo metodo di Runge-Kutta e per distinguere un metodo dall'altro basta 
-scriverne i coefficienti. Questi, in più, possono essere accorpati all'interno
-di una tabella che prende il nome di Tabluau di Butcher.
-In figura è mostrata la disposizione di tali coefifcineti all'interno 
+I coefficienti a_ij, bi, ci  giocano un ruolo fondamentale perchè rappresentano, determinano 
+il singolo metodo di Runge-Kutta. Questi coefficienti possono essere accorpati all'interno
+di una tabella che prende il nome di Tableau di Butcher per facilitare la costruzione
+del metodo.
+
+In figura è mostrata la disposizione di tali coefficienti all'interno del Tableau: come si vede 
+nella colonna a sinistra sono disposti i coefficienti ci, al centro i coefficienti aij compongono
+la matrice A che nei metodi da noi analizzati sarà sempre triangolare inferiore, in quanto 
+tratteremo sempre metodi espliciti, nella riga più inferiore i coefficienti bi.
+
+I metodi Rk più utilizzati sono di tipo esplicito.
+Ricordiamo che nei metodi ESPLICITI la soluzione numerica u_n+1 dipende esclusivamente
+dai valore precedentemente calcolati.
+Questo metodo è meno costoso poichè sfrutta in maniera più
+intelligente le informazioni sulle derivate della funzione nello stesso 
+passo d'integrazione. Come vedremo in seguito, nei metodi RK espliciti i
+generici stadi Ki vengono determinati in funzione degli stadi precedenti.
+
 
 
 SLIDE3: ESEMPIO ORDINE 4
-Dunque per definire ogni sigolo metodo occorre costruire il suo
+Dunque per definire ogni singolo metodo occorre costruire il suo
 corrispondente Tableau per rappresentarlo in forma compatta.
 
 Un famoso metodo di Runge-Kutta è quello del quarto ordine,
-da questo importante esempio è possibile spiegare 2 cose:
+Utilizzando questo importante esempio è possibile spiegare meglio 2 concetti:
 
 
 SLIDE4:STADI METODO
-1) in primis Gli stadi del metodo. infatti U_n+1 è definito come u_n più 
-la media pesata di 4 incrementi che sono definiti come K1,K2,k3,k4.
-Essi rappresentano il calcolo della derivata in punti precisi all'interno 
-del passo, e quindi corrispondo a una stima della pendenza di f, 
-la funzione incognita. Ad esempio:
-K1 è l'icremento basato sulla pendenza della funzine all'inizio 
-dell'intervallo, quindi in t_n.
-K2 è l'incremento basato sulla pendenza alla metà dell'intervallo, utilizzando
-il dato calcolato in precedenza K1. infatti nella sua espressione a t_n viene 
-sommato metà del passo di integrazione e  vi è la dipendenza da K1.
+1) in primis gli stadi del metodo, ossia come interagiscono i vari coefficienti nel determinare
+l'espressione degli stadi Ki, e come si determina la soluzione numerica. 
+Infatti U_n+1, cioè l'approssimazione allo step successivo, è definito come u_n più una combinazione lineare di 
+4 incrementi K1,K2,K3,k4 moltiplicati per i rispettivi coefficienti bi, in questo caso 1/6,1/3,1/3,1/6. 
+Come anticipato in precedenza, i termini Ki rappresentazione il calcolo della derivata in punti precisi 
+all'interno del passo di integrazione, e quindi corrispondono a una stima della pendenza di f, 
+la funzione incognita. 
+Ad esempio:
+K1 è una valutazione della funzione f all'inizio dell'intervallo, quindi in t_n.
+K2 è un valutazione di f a metà dell'intervallo, infatti come si può notare il coefficiente c2
+che va a moltiplicare il passo è pari a 1/2, mentre a un viene sommato h moltiplicato per il prodotto di
+a12 (sempre pari a 1/2) e K1. 
+Stesso ragionamento si può fare per lo stadio K3, in quanto abbiamo c3 pari 1/2, a32 pari 1/2
+va a moltiplicare K2.
+Infine l'ultimo stadio K4 viene valutato in tn+1, infatti c4 è pari a 1, mentre a un e a43 moltiplica K4 per 1.
 
-SLIDE5:STADI DEL METODO  
-K3 è un altro incremento basato sulla pendenza alla metà dell'intervallo, 
-utilizzando K2 e K4 è l'incremento basato sulla pendenza alla fine dell'intervallo,
-e questo lo si vede perchè lo si calcola in t_n+1, utilizzando k3. 
-  
 
-SLIDE 6: UTILITA' TABLEAU
-2) la seconda cosa che si mostra dall'esempio è l'utilità del Tableau di 
+SLIDE 5: UTILITA' TABLEAU
+2) L'esempio fornito inoltre ci mostra l'utilità del Tableau di 
 Butcher. Prima di tutto perchè permette di implementare immediatamente un qualunque 
-Metodo di Runge-Kutta, raggruppando i coefficienti al suo interno. E poi 
-permette di verificare "a occhio" alcune proprietà che possono essere 
+Metodo di Runge-Kutta, raggruppando i coefficienti al suo interno. 
+E poi permette di verificare "a occhio" alcune proprietà che possono essere 
 un po' macchinose, limitandomi a fare semplicemente una somma per righe o 
 per colonne.
 
 -Un esempio di questa applicazione è il riconoscimento della proprietà 
 di CONSISTENZA, derivanta dalla sommatoria dei
-coeff. b_i, per i da 1 a s =1. ricordo che i coefficienti b sono quelli che 
-moltiplicano i termini K nell'espressione generale e vengono rappresentati 
-nel Tableau in basso a destra.
+coeff. b_i, per i da 1 a s =1.
 
 
-SLIDE7:METODO ESPLICITO
-- Si può anche riconoscere il METODO DI RISOLUZIONE, il quale può essere
-  esplicito nel caso in cui dal Tableau la matrice dei coeff. aij 
-  sia strettamente diagonale inferiore mentre in caso contrario,
-  quindi una matrice generica, è detto implicito.
+SLIDE6:PROPRIETA'
 
+ora lascio la parola al mio collega Michele, che attraverso un esempio grafico
+ci mostrerà il miglioramento di accuratezza portato da un metodo di ordine elevato.
 
-->Nel metodo ESPLICITO la soluzione numerica u_n+1 dipende esclusivamente
-   dai valore precedentemente calcolati.
-   Questo metodo è meno costoso poichè sfrutta in maniera più
-   intelligente le info sulle derivate della funzione nello stesso 
-   passo d'integrazione.
-
-ora lascio la parola al mio collega Michele.
-
-
-
+%% Da vedere se inserire o no dopo la spiegazione di mercoledì.
 
 [I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera,
 con h che indica il passo di integrazione e la funzione Phi detta funzione
@@ -385,9 +385,6 @@ dove un indica la soluzione numerica al momento tn,  hn è la dimensione del pas
 hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  derivano dalla differenza tra la formula del terzo ordine
 utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione,
 anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
-
-Vediamo che nella formulazione della stima dell’errore compare un termine K4 che viene calcolato a costo nullo poiché verrà poi utilizzato come primo termine k nell’iterazione successiva.
-Da qui vediamo quindi il vantaggio dei metodi embedded, che permettono di avere gratis la stima dell’errore.
 
 Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
 Con questo esempio si conclude la presentazione dei metodi di runge-kutta per la soluzione delle equazioni differenziali ordinarie.
