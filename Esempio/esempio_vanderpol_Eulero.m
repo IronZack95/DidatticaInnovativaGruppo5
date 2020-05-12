@@ -46,7 +46,7 @@ vdp = @(t, y) [y(2); mu*(1-y(1)^2)*y(2)-y(1)+f(t)];
 
 subplot(2,2,1)
 plot (t, x(t),'g', t, xp(t),'r', t, y(:, 1), 'xb', t, y(:, 2), 'or')
-title (['Soluzione con Eulero con n = ',int2str(passi)])
+title (['Soluzione Eulero con n = ',int2str(passi)])
 xlabel('Time t');
 ylabel('Solution y');
 legend('x(t)','dx(t)/dt')
