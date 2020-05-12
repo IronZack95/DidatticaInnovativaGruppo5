@@ -1,15 +1,13 @@
 %% Equazione di van der pol
-%% x'' - mu * (1 - x^2) * x' + x = 0
+%% y'' - mu * (1 - y^2) * y' + y = 0
 %%
 %% forzante
 %%
 %% f(t) = y''(1,t) - mu * (1 - y(1, t) ^ 2) + y(1, t) = 0
+
 %% le pongo uguali visto che sono entrambe uguali a zero
-%% x'' - mu * (1 - x^2) * x' + x = y''(1,t) - mu * (1 - y(1, t) ^ 2) + y(1, t)
-%% le riscrivo come segue
-%% x'' - mu * (1 - x^2) * x' + x = f(t)
-%% porto al secono membro
-%% x'' = f(t) - mu * (1 - x^2) * x' + x
+
+
 %% sistema di equazioni
 %% equazione del secondo ordine
 %% y'' = mu * (1 - y^2) * y' - y + f
