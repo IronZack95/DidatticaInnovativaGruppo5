@@ -1,8 +1,10 @@
 clc;                                               % Clears the screen
-clear;
+clear all;
+close all;
 
-h=0.01*pi;        % frazione decimale di pi-->100 passi 
-t = 0:h:pi;                                        
+tspan = [0,pi];
+h=0.01*tspan(2);        % frazione decimale di pi-->100 passi 
+t = tspan(1):h:tspan(2);                                 
 i = zeros(1,length(t)); 
 y1(1) = 0;     
 y2(1) = 0;% initial condition
@@ -28,12 +30,29 @@ for i=1:(length(t)-1)                              % calculation loop
     
 end
 
-plot (t, x(t), t, xp(t), t, y1, 'x', t, y2, 'o')
 % Linea continua soluzione esatta, x e o soluzione numerica
-figure
-plot (t, abs(x(t) - y1))
-title ('errore prima componente')
+subplot(2,2,1)
+plot (t, x(t),'g', t, xp(t),'r', t, y1, 'xb', t, y2, 'or')
+title (['Soluzione con HEUN con n = ',int2str(length(t))])
+xlabel('Time t');
+ylabel('Solution y');
+legend('x(t)','dx(t)/dt')
+axis([tspan(1) tspan(2) -inf inf])
 
-figure
-plot (t, abs(xp(t) - y2))
+subplot(2,2,2)
+plot (t, x(t) - y1)
+title ('errore prima componente')
+xlabel('Time t');
+axis([tspan(1) tspan(2) -inf inf])
+
+subplot(2,2,4)
+plot (t, xp(t) - y2)
 title ('errore seconda componente')
+xlabel('Time t');
+axis([tspan(1) tspan(2) -inf inf])
+
+subplot(2,2,3)
+plot (t(2:end), diff (t))
+title ('passo adattivo')
+xlabel('Time t');
+axis([tspan(1) tspan(2) h-0.01 h+0.01])
