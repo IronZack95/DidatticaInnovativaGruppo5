@@ -7,7 +7,7 @@ i = zeros(1,length(t));
 y1(1) = 0;     
 y2(1) = 0;% initial condition
 mu = 1;
-% Termini forzanti gi‡ presenti nel file del De Falco
+% Termini forzanti gi√† presenti nel file del De Falco
 x   = @(t) sin (t) .^ 4;
 xp  = @(t) 4 * sin (t) .^ 3 .* cos (t);
 xpp = @(t) 4 * (3 * sin (t) .^ 2 .* cos (t) .^2 - sin (t) .^ 4);
@@ -35,5 +35,12 @@ end
 plot (t, x(t), t, xp(t), t, y1, 'x', t, y2, 'o')
 % Linea continua soluzione esatta, x e o soluzione numerica
 
+figure
+plot (t, abs(x(t) - y1))
+title ('errore prima componente')
+
+figure
+plot (t, abs(xp(t) - y2))
+title ('errore seconda componente')
 
 
