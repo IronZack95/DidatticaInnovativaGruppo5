@@ -44,7 +44,7 @@ vdp = @(t, y) [y(2); mu*(1-y(1)^2)*y(2)-y(1)+f(t)];
 
 [t, y] = feuler (vdp, tspan, [x(0); xp(0)],passi);
 
-subplot(2,2,1)
+subplot(2,2,[1,2])
 plot (t, x(t),'g', t, xp(t),'r', t, y(:, 1), 'xb', t, y(:, 2), 'or')
 title (['Soluzione Eulero con n = ',int2str(passi)])
 xlabel('Time t');
@@ -52,7 +52,7 @@ ylabel('Solution y');
 % legend('x(t)','dx(t)/dt')
 axis([tspan(1) tspan(2) -inf inf])
 
-subplot(2,2,2)
+subplot(2,2,3)
 plot (t, x(t) - y(:, 1))
 title ('errore prima componente')
 xlabel('Time t');
@@ -63,9 +63,10 @@ plot (t, xp(t) - y(:, 2))
 title ('errore seconda componente')
 xlabel('Time t');
 axis([tspan(1) tspan(2) -inf inf])
-
+%{
 subplot(2,2,3)
 semilogy (t(2:end), diff (t))
 title ('passo adattivo')
 xlabel('Time t');
 axis([tspan(1) tspan(2) tspan(2)/passi-0.01 tspan(2)/passi+0.01])
+%}

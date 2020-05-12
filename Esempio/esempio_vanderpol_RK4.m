@@ -36,7 +36,7 @@ end
 
 % Linea continua soluzione esatta, x e o soluzione numerica
 
-subplot(2,2,1)
+subplot(2,2,[1,2])
 plot (t, x(t),'g', t, xp(t),'r', t, y1, 'xb', t, y2, 'or')
 title (['Soluzione RUNGE-KUTTA con n = ',int2str(length(t))])
 xlabel('Time t');
@@ -44,7 +44,7 @@ ylabel('Solution y');
 % legend('x(t)','dx(t)/dt')
 axis([tspan(1) tspan(2) -inf inf])
 
-subplot(2,2,2)
+subplot(2,2,3)
 plot (t, x(t) - y1)
 title ('errore prima componente')
 xlabel('Time t');
@@ -56,8 +56,10 @@ title ('errore seconda componente')
 xlabel('Time t');
 axis([tspan(1) tspan(2) -inf inf])
 
+%{
 subplot(2,2,3)
 plot (t(2:end), diff (t))
 title ('passo adattivo')
 xlabel('Time t');
 axis([tspan(1) tspan(2) h-0.01 h+0.01])
+%}
