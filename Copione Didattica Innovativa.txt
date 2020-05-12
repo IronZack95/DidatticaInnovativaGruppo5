@@ -386,5 +386,8 @@ hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  deriva
 utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione,
 anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
 
+Vediamo che nella formulazione della stima dell’errore compare un termine K4 che viene calcolato a costo nullo poiché verrà poi utilizzato come primo termine k nell’iterazione successiva.
+Da qui vediamo quindi il vantaggio dei metodi embedded, che permettono di avere gratis la stima dell’errore.
+
 Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
 Con questo esempio si conclude la presentazione dei metodi di runge-kutta per la soluzione delle equazioni differenziali ordinarie.
