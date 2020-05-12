@@ -362,6 +362,8 @@ che può essere quindi utilizzato per implementare la dimensione del passo adatt
 Questo metodo è implementato nella funzione ode23 presente in Matlab e il suo tableau di Butcher è il seguente:
 
 SLIDE 2
+L’obiettivo e di calcolare una soluzione approssimata (un+1 in tn+1 = tn + h) che è d’accordo con la soluzione reale (u(tn+1)) entro la tolleranza specificata.
+
 Un passaggio del metodo Bogacki-Shampine è dato dalle seguenti equazioni:
 
 dove un indica la soluzione numerica al momento tn,  hn è la dimensione del passo, definita da
@@ -369,11 +371,5 @@ hn = tn+1 – tn ed e_(n+1) è la stima dell’errore i cui coefficienti  deriva
 utilizzata per il calcolo di  u_(n+1) e la formula indipendente del secondo ordine u^n+1 che coinvolge gli stessi valori di funzione,
 anche se il risultato del secondo ordine non viene effettivamente calcolato perché il suo valore non è necessario.
 
-SLIDE 3
-Questo grafico mostra la situazione inziale e le tre fasi svolte per ciascuna iterazione.
-Partendo dal punto (tn,un) con una pendenza iniziale k1=f(tn,un) ed un passo h (una valutazione di un buon passo, h).
-L’obiettivo e di calcolare una soluzione approssimata (un+1 in tn+1 = tn + h) che è d’accordo con la soluzione reale (u(tn+1))
-entro la tolleranza specificata.
-Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione
-all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo
-senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
+Tutti i solutori in seguito forniscono un interpolante in grado di generare valori approssimativi della soluzione all'equazione differenziale con l'accuratezza desiderata in qualsiasi punto dell'intervallo senza richiedere un'ulteriore valutazione della funzione che definisce l'ode.
+Con questo esempio si conclude la presentazione dei metodi di runge-kutta per la soluzione delle equazioni differenziali ordinarie.

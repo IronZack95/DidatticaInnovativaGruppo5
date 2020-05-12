@@ -39,7 +39,7 @@ end
 
 subplot(2,2,1)
 plot (t, x(t),'g', t, xp(t),'r', t, y1, 'xb', t, y2, 'or')
-title (['Soluzione con RUNGE-KUTTA con n = ',int2str(length(t))])
+title (['Soluzione RUNGE-KUTTA con n = ',int2str(length(t))])
 xlabel('Time t');
 ylabel('Solution y');
 legend('x(t)','dx(t)/dt')

@@ -33,7 +33,7 @@ end
 % Linea continua soluzione esatta, x e o soluzione numerica
 subplot(2,2,1)
 plot (t, x(t),'g', t, xp(t),'r', t, y1, 'xb', t, y2, 'or')
-title (['Soluzione con HEUN con n = ',int2str(length(t))])
+title (['Soluzione HEUN con n = ',int2str(length(t))])
 xlabel('Time t');
 ylabel('Solution y');
 legend('x(t)','dx(t)/dt')
