@@ -58,7 +58,7 @@ xlabel('Time t');
 axis([tspan(1) tspan(2) -inf inf])
 
 subplot(2,2,3)
-semilogy (t(2:end), diff (t))
+plot (t(2:end), diff (t))
 title ('passo adattivo')
 xlabel('Time t');
-axis([tspan(1) tspan(2) -inf inf])
+axis([tspan(1) tspan(2) h-0.01 h+0.01])
