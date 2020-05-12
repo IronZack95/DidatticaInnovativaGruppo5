@@ -33,6 +33,7 @@ close all
 figure
 
 tspan = [0;pi];
+passi = 50;
 
 x   = @(t) sin (t) .^ 4;
 xp  = @(t) 4 * sin (t) .^ 3 .* cos (t);
@@ -41,11 +42,11 @@ mu  = 1;
 f   = @(t) xpp(t) - mu * (1 - x(t).^2) .* xp(t) + x(t);
 vdp = @(t, y) [y(2); mu*(1-y(1)^2)*y(2)-y(1)+f(t)];
 
-[t, y] = ode23 (vdp, tspan, [x(0); xp(0)], odeset ('AbsTol', 1e-4));
+[t, y] = feuler (vdp, tspan, [x(0); xp(0)],passi);
 
 subplot(2,2,1)
-plot (t, x(t), t, xp(t), t, y(:, 1), 'xb', t, y(:, 2), 'or')
-title ('Soluzione con ODE23')
+plot (t, x(t),'g', t, xp(t),'m', t, y(:, 1), 'xb', t, y(:, 2), 'or')
+title ('Soluzione con Eulero')
 xlabel('Time t');
 ylabel('Solution y');
 legend('x(t)','dx(t)/dt')

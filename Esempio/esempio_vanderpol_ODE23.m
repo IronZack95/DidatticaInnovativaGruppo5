@@ -45,7 +45,7 @@ vdp = @(t, y) [y(2); mu*(1-y(1)^2)*y(2)-y(1)+f(t)];
 
 subplot(2,2,1)
 plot (t, x(t), t, xp(t), t, y(:, 1), 'xb', t, y(:, 2), 'or')
-title ('Soluzione')
+title ('Soluzione con ODE23')
 xlabel('Time t');
 ylabel('Solution y');
 legend('x(t)','dx(t)/dt')
