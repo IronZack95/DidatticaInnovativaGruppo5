@@ -163,3 +163,157 @@ Ovvero con \textbf{n} valutazioni della funzione all'interno di ogni passo.
     Si trovano risultati confrontabili con Ode23.
 
 \end{frame}
+
+
+
+
+SLIDE: METODI DI ORDINE ELEVATO
+
+Buongiorno a tutti,
+oggi parleremo dei metodi ODE di ordine elevato
+
+SLIDE:DOVE SIAMO ARRIVATI
+
+Bene, a lezione abbiamo introdotto due metodi numerici, il metodo di Eulero e del metodo dei trapezi
+Il metodo di Eulero è il più basilare dei metodi
+espliciti per l'integrazione numerica di equazioni differenziali ordinarie, date le condizioni iniziali
+
+SLIDE: PROBLEMA DEI TRE CORPI
+
+Tra i problemi più famosi riguardanti le Equazioni Differenziali ne citiamo due
+ad esempio il problema dei tre corpi
+il quale consiste nel calcolare date
+la posizione iniziale
+la massa
+e la velocità
+di 3 corpi, ad esempio pianeti, soggetti all'influsso della reciproca attrazione
+gravitazionale l'evoluzione futura del sistema da essi costituito
+si potrebbe pensare di utilizzare un sistema di equazioni differenziali ordinarie
+derivanti dalle leggi del moto di Isaac Newton come avviene normalmente in presenza di due corpi
+
+si dimostra però che a differenza del caso di due corpi
+non si conoscono soluzioni in forma chiusa
+
+L'unico modo di approssimare al meglio il moto di tre corpi e quindi quello di
+utilizzare un metodo numerico
+
+SLIDE: PENDOLO SFERICO 1
+
+Un altro esempio classico invece è il pendolo sferico,
+sistema molto studiato perchè ha la peculiarità per cui anche solo piccolissime
+variazioni delle condizioni iniziali del moto del pendolo
+causano grandi variazioni della dinamica del sistema
+
+SLIDE: PENDOLO SFERICO 1
+
+Quindi in questo caso vogliamo studiare il moto del centro di massa m del pendolo
+che è un Punto con coordinate X1 X2 X3
+
+soggetto alla forza di gravità e vincolato a muoversi su una superficie di forma sferica
+FI di X
+Quindi il seguente sistema di equazioni differenziali ordinarie scritte in forma
+compatta  descrive le accelerazioni che agiscono su questo Punto
+Abbiamo indicato con X punto e X due punti la derivata prima e seconda di X rispetto al tempo T
+e con H la matrice hessiana di FI
+
+SLIDE: PENDOLO SFERICO 2
+
+al fine di risolvere numericamente l'equazione riportata nella slide precedente
+Riportiamo tutte le VARIABILI DI STATO del nostro sistema
+in forma NORMALE in un vettore Y
+che diventa quindi un vettore di 6 componenti
+in cui le prime tre componenti saranno le nostre tre coordinate spaziali
+mentre le seconde tre componenti sono le derivate prime delle coordinate spaziali
+
+
+SLIDE: PENDOLO SFERICO 3
+
+Inizializiamo il sistema in y0 con le seguenti condizioni iniziali
+Questo è il nostro problema di CAUCHY
+in questo caso il pendolo parte in posisione orizzontale con una piccola velocità iniziale
+Da notare che TSPAN rappresenta l’intervallo di tempo in cui vogliamo testare il sistema
+tra 0 e 25 secondi
+
+SLIDE: MATLAB FUNCTION
+
+Operativamente andiamo a scrivere una FUNCTION di MATLAB che prende in ingresso due elementi
+il tempo
+e il vettore di inizializzazione
+mentre F come output rapprensenta il nuovo vettore Y
+
+SLIDE: METODO DI EULERO TEST
+
+Testiamo quindi il sistema con il metodo di Eulero
+(Da notare che in ingresso l’ultimo argomento NT è il numero di intervalli
+in cui suddividere equalmente l’intervallo TSPAN, come farebbe il comando LINSPACE)
+
+Video EULERO
+
+primo caso Mille nodi o passi di discretizzazione
+secondo Dieci Mila nodi
+
+(stima del Residuo)
+
+SLIDE: OBIETTIVO
+
+quindi L’obiettivo ,se possibile, è  quello di migliorare l’ordine di accuratezza delle funzioni ad passo
+La soluzione potrebbe essere quella di implementare metodi ad un passo ma multi-stage,
+ovvero con più valutazioni della funzione all’interno di ogni passo
+
+SLIDE: RUNGE-KUTTA
+
+Metodi con queste caratteristiche rappresentano una classe più generalizzata
+rispetto ai metodi di Eulero e vengono chiamati metodi di Runge-Kutta
+
+Poi vedremo nel dettaglio questi metodi , tra cui un caso particolare detto metodo di HEUN
+
+Da notare che i metodi di Eulero e dei Trapezi diventano casi particolari Runge-Kutta
+di ordine 1 e 2
+
+SLIDE: POSSIAMO MIGLIORARE?
+
+Ma la domanda che ci facciamo ora è…
+Visto che questi metodi sono una generalizzazione di ordine più alto rispetto ai metodi di EULERO,
+ restano comunque molto dispendiosi per
+l’alto costo computazionale
+e per il passo fisso che bisogna inserire manualmente
+
+SLIDE: METODI EMBEDDED
+
+Introduciamo così una seconda classe di metodi detti EMBEDDED o INTEGRATI
+che sono figli dei metodi Runge-Kutta e ne rappresentano un miglioramento
+questi metodi infatti RIUTILIZZANO gli stessi coefficienti già calcolati ad ogni passo
+non solo per costruire una PRIMA SOLUZIONE,
+ma anche una SECONDA SOLUIZIONE
+di diverso ordine con cui stimare l’errore
+e successivamente adattare il passo
+
+I PRO sono
+un costo computazionale ottimizzato
+e l’adattività di passo
+
+SLIDE: METODI ODE
+
+MATLAB infatti utilizza questi metodi in due sue note funzioni
+ ODE23
+ ODE45
+altrimenti dette di
+Bogacki-Shampigne
+Dormand-Prince
+
+SLIDE: METODI ODE MATLAB
+
+Bene, vediamo come si comportano con il nostro esempio del pendolo
+da notare che rispetto Eulero manca l’ultimo argomento,
+per cui ci aspettiamo che sia la funzione stessa a scegliere il passo in maniera Automatica
+
+VIDEO 1
+
+Ora vediamo che i metodi ODE si comportano decisamente meglio
+
+con il comando ODESET si può impostare una tolleranza relativa uguale
+sia per ODE23 che ODE45
+
+VIDEO 2
+
+Lascio la parola a Samuele sui metodi RK
