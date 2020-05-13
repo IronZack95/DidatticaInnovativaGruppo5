@@ -314,6 +314,8 @@ l’errore locale come un o grande di h^2. Il metodo di Heun risulta quindi più
 Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con gli stessi errori,
 è la linearità del metodo di Heun, che risulta quindi più facile da implementare.
 
+ZACK
+%% Da van der pol introdurre metodi embedded andando a sottilineare i vantaggi dell'adattività di passo
 
 SAMU
 
