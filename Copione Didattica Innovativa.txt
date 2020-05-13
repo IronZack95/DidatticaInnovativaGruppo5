@@ -317,48 +317,29 @@ SAMU
 
 METODI EMBEDDED
 SLIDE 1
-Una particolare proprietà dei metodi di runge kutta è quella che alcuni di essi possono condividere lo stesso tableau di Butcher, in
-particolare gli stessi coefficienti aij e ci, mentre differenti coefficienti bi.
-Queste coppie di metodi runge kutta vengono definite embedded, ossia integrate.
-Il vantaggio principale di questa coppia embedded è che, ad un determinato passo tn di integrazione, è possibile sia conoscere oltre la
-soluzione numerica a quel passo, anche una stima dell’errore locale. Condividendo lo stesso Tableau di Butcher, i due metodi richiedono
-le stesse valutazioni funzionali e quindi il costo computazionale è identico a quello del calcolo di un’unica soluzione del primo metodo:
-la seconda approssimazione è praticamente gratuita.
-Quindi, dei due metodi, uno svolge un ruolo primario, in quanto lo stimatore dell’errore approssima il suo errore di troncamento locale
-e la soluzione da esso prodotta è quella che viene accettata ad ogni passo; l’altro metodo, solitamente con ordine di convergenza
-maggiore, invece è soltanto funzionale a stimare l’errore.
-In base alla stima dell’errore si può quindi valutare se aumentare o diminuire l’ampiezza dell’intervallo di integrazione per ottenere
-una soluzione con un’accuratezza desiderata.
+Una particolare proprietà dei metodi di runge kutta è quella che alcuni di essi possono condividere lo stesso tableau di Butcher, in particolare gli stessi coefficienti aij e ci, mentre differenti coefficienti bi. Queste coppie di metodi runge kutta vengono definite embedded, ossia integrate.
+Il vantaggio principale di questa coppia embedded è che, ad un determinato passo tn di integrazione, è possibile sia conoscere oltre la soluzione numerica a quel passo, anche una stima dell’errore locale. 
+Condividendo lo stesso Tableau di Butcher, i due metodi richiedono le stesse valutazioni funzionali Ki e quindi il costo computazionale è identico a quello del calcolo di un’unica soluzione data da uno solo dei 2 metodi: la seconda approssimazione è praticamente gratuita. 
+Quindi, dei due metodi, uno svolge un ruolo primario, in quanto lo stimatore dell’errore approssima il suo errore di troncamento locale e la soluzione da esso prodotta è quella che viene accettata ad ogni passo; l’altro metodo, solitamente con ordine di convergenza maggiore, invece è soltanto funzionale a stimare l’errore.
+In base alla stima dell’errore, si può quindi valutare se aumentare o diminuire l’ampiezza dell’intervallo di integrazione per ottenere una soluzione con un’accuratezza desiderata. 
 SLIDE 2
-Ecco il tableau di una generica coppia embedded, come si può notare i due metodi condividono gli stessi coefficienti aij e ci mentre
-diversi coefficienti bi. Le approssimazioni numeriche sono u1 e u1 cappello di ordine p e p cappello.
+Ecco il tableau di una generica coppia embedded, come si può notare i due metodi condividono gli stessi coefficienti aij e ci mentre diversi coefficienti bi. Le approssimazioni numeriche sono u_n e u_n cappello di ordine p e p cappello.
 Alcuni esempi di metodi embedded sono:
 *Bogacki-Shampine 3(2), utilizzata in matlab nella funzione ode23.
-*Dormand-Prince 5(4), utilizzata in matlab nella funzione ode45.
+*Dormand-Prince 5(4), utilizzata in matlab nella funzione ode45. 
 
 AUTOMATIC STEP SIZE CONTROL
 SLIDE 1
 Come anticipato in precedenza, la stima dell’errore locale ci permette di rendere il passo adattivo.
-Quindi, come implementare un codice\algoritmo che renda il passo adattivo, diminuendo il costo computazionale, ma che comunque
-garantisca una tolleranza dell’errore locale scelta a priori?
-Si parta ovviamente dalla scelta di un passo iniziale h, il programma computa le 2 approssimazioni numeriche della soluzione u1 e u1
-cappello, calcolate dai 2 metodi RK embedded. La differenza tra le approssimazioni dà una buona stima dell’errore locale.
-E ovviamente questa stima, ossia il modulo della differenza delle 2 soluzioni della coppia embedded, deve essere minore uguale della
-tolleranza prescelta. Come si può vedere, la tolleranza può essere formata da un termine di errore assoluto rappresentato dal fattore
-Atol e uno relativo Rtol che invece individua l’errore relativo tra le 2 computazioni,  tra il passo precedente e quello attuale.
-SLIDE 2
-Prendiamo però come errore locale locale effettivo la norma 2 del rapporto tra la differenza delle 2 soluzioni numeriche all’iesimo
-passo e la tolleranza imposta. Per rispettare la condizione della slide precedente vogliamo che l’errore sia paragonabile a 1.
-Inoltre l’errore locale si può vedere come una costante C moltiplicata per una potenza q+1 del passo, dove q è il minor ordine tra
-i 2 della coppia embedded, e inoltre noi vogliamo che questo errore sia uguale a 1 per trovare il passo ottimale.
-In più, si vuole che C moltiplicata per una potenza q+1  del passo ottimale sia comparabile a 1.
-Unendo le 2 formule, si arriva alla formula del passo ottimale che è uguale al passo iniziale moltiplicato per il reciproco dell’errore
-elevato a 1/(q+1). Se l’errore se minore uguale a 1, la tolleranza è rispettata e la soluzione dell’iesimo passo è accettata.
-Si procede con il calcolo del nuovo passo hnew e si calcolo la soluzione del nuovo step. Se la condizione non è verificata, la soluzione
-non viene accettata e si ripete il calcolo con il nuovo passo hnew.
-Per dare robustezza all’algoritmo, vengono introdotti fattori di sicurezza che permettono una maggiore possibilità che la condizione
-della tolleranza sia soddisfatta, e quindi non si continui a ripetere uno step aumentando il costo computazionale,  e inoltre non si
-vuole che il passo cambi bruscamente per ovvi motivi di precisione.
+Questa necessità di rendere il passo adattivo è data dal fatto che se da un lato vogliamo che il passo sia sufficientemente piccolo da soddisfare una data tolleranza, dall’altra vogliamo che il passo sia sufficientemente largo da evitare lavoro computazionale non necessario.
+Quindi, come implementare un codice\algoritmo che renda il passo adattivo, diminuendo il costo computazionale, ma che comunque garantisca una tolleranza dell’errore locale scelta a priori?
+Si parta ovviamente dalla scelta di un passo iniziale h, il programma computa le 2 approssimazioni numeriche della soluzione u_n e u_n cappello, calcolate dai 2 metodi RK embedded. La differenza tra le approssimazioni dà una buona stima dell’errore locale. E ovviamente questa stima, ossia il modulo della differenza delle 2 soluzioni della coppia embedded, deve essere minore uguale della tolleranza prescelta. 
+Come si può vedere, la tolleranza può essere formata da un termine di errore assoluto rappresentato dal fattore Atol e uno relativo Rtol che invece individua l’errore relativo tra le 2 computazioni,  tra il passo precedente e quello attuale. 
+SLIDE 2	
+Prendiamo però come errore locale locale effettivo la norma 2 del rapporto tra la differenza delle 2 soluzioni numeriche all’iesimo passo e la tolleranza imposta.
+Per rispettare la condizione della slide precedente vogliamo che l’errore sia paragonabile a 1. L’errore locale si può vedere come una costante C moltiplicata per una potenza q+1 del passo, dove q è il minor ordine tra i 2 della coppia embedded, e inoltre noi vogliamo che questo errore sia uguale a 1 per trovare il passo ottimale: infatti si ha C moltiplicata per una potenza q+1  del passo ottimale sia comparabile a 1. Unendo le 2 formule, Si arriva alla formula del passo ottimale che è uguale al passo iniziale moltiplicato per il reciproco dell’errore elevato a 1/(q+1).
+Se l’errore se minore uguale a 1, la tolleranza è rispettata e la soluzione dell’iesimo passo è accettata. Si procede con il calcolo del nuovo passo hnew e si calcolo la soluzione del nuovo step. Se la condizione non è verificata, la soluzione non viene accettata e si ripete il calcolo con il nuovo passo hnew.
+Per dare robustezza all’algoritmo, vengono introdotti fattori di sicurezza che permettono una maggiore possibilità che la condizione della tolleranza sia soddisfatta, e quindi non si continui a ripetere uno step aumentando il costo computazionale,  e inoltre non si vuole che il passo cambi bruscamente per ovvi motivi di precisione.
 
 ROSE
 
