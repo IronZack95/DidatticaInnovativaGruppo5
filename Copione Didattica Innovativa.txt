@@ -246,6 +246,10 @@ Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch�
 è la linearità del metodo di Heun, che risulta quindi più facile da implementare.
 Bisogna però ricordare come il metodo di Crank-Nicholson essendo implicito è più versatile del metodo di heun, perchè presenta una regione di assoluta stabilità più estesa di quella di un metodo RK2 come il metodo di Heun.
 
+SLIDE 8
+
+Possiamo vedere il metodo di Heun risolve l’equazione dell’oscillatore di Van der Pol. L’ordine di grandezza dell’errore introdotto è 10^-4, usando il metodo di Eulero con lo stesso passo di integrazione l’ordine di grandezza è invece 10^-1; otteniamo quindi una accuratezza maggiore mantenendo quasi inalterato il costo computazionale.
+
 ZACK
 %% Da van der pol introdurre metodi embedded andando a sottilineare i vantaggi dell'adattività di passo
 
