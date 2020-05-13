@@ -33,7 +33,7 @@ close all
 figure
 
 tspan = [0,pi];
-passi = 25;
+passi = 100;
 
 x   = @(t) sin (t) .^ 4;
 xp  = @(t) 4 * sin (t) .^ 3 .* cos (t);
