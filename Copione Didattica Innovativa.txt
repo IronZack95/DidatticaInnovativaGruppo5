@@ -119,7 +119,7 @@ metodi dai coefficienti a_ij, bi, ci.
 SLIDE 2: TABLEAU
 I coefficienti a_ij, bi, ci  giocano un ruolo fondamentale perchè rappresentano, determinano
 il singolo metodo di Runge-Kutta. Questi coefficienti possono essere accorpati all'interno
-di una tabella che prende il nome di Tableau di Butcher per facilitare la costruzione
+di una tabella che prende il nome di Tableau di Butcher per facilitare la visualizzazione
 del metodo.
 
 In figura è mostrata la disposizione di tali coefficienti all'interno del Tableau: come si vede
@@ -165,8 +165,7 @@ Infine l'ultimo stadio K4 viene valutato in tn+1, infatti c4 è pari a 1, mentre
 
 SLIDE 5: CONSISTENZA
 L'esempio fornito inoltre ci mostra l'utilità del Tableau di
-Butcher. Prima di tutto perchè permette di implementare immediatamente un qualunque
-Metodo di Runge-Kutta, raggruppando i coefficienti al suo interno.
+Butcher.
 E poi permette di verificare "a occhio" alcune proprietà che possono essere
 un po' macchinose, limitandomi a fare semplicemente una somma per righe o
 per colonne.
