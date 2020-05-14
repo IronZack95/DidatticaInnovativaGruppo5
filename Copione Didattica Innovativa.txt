@@ -74,7 +74,7 @@ che prenderà quindi il nome di FUNZIONE INCREMENTO
 Da notare che tutti i metodi che abbiamo visto fin ora siano scrivibili in questa forma
 solo modificando per ogni metodo il rispettivo FI
 I due metodi di Eulero sono di ordine 1 e FI contiene un'unica valutazione della FUNZIONE
-mentre Cranck-Nicolson avendo 2 valutazioni della funzione Approssimerà meglio lo sviluppo in funzione di Taylor
+mentre Cranck-Nicolson avendo 2 valutazioni della funzione Approssimerà meglio lo sviluppo di Taylor
 della funzione differenziale e infatti l'errore di troncamento risulta di ordine 2
 
 Quindi ci aspettiamo che estendendo il numero di valutazioni della funzione F all'interno della FUNZIONE INCREMENTO
@@ -278,7 +278,7 @@ e l'errore sia sempre tenuto sotto una certa tolleranza minima, in questo caso 1
 è importante notare che gli errori che abbiamo visto precendentemente negli esempi di van der pol
 siano stati calcolati in base ad una soluzione analitica esatta in nostro possesso,
 Questa cosa però non è assolutamente valida in generale,
-nella maggior parte delle equazuioni differenziali non è detto esista una soluzione analitica 
+nella maggior parte delle equazuioni differenziali non è detto esista una soluzione analitica
 scrivibile in modo esplicito, o in forma chiusa.
 
 Quindi ora lascio la parola a Samuele che spiegherà che strategia usano i metodi
@@ -290,7 +290,7 @@ METODI EMBEDDED
 
 SSLIDE 1
 Una particolare proprietà dei metodi di runge kutta è quella che alcuni di essi possono condividere lo stesso tableau di Butcher, in particolare gli stessi coefficienti aij e ci, mentre differenti coefficienti bi. Queste coppie di metodi runge kutta vengono definite embedded, ossia integrate.
-Il vantaggio principale di questa coppia embedded è che, ad un determinato passo tn di integrazione, è possibile sia conoscere oltre la soluzione numerica a quel passo, anche una stima dell’errore locale. 
+Il vantaggio principale di questa coppia embedded è che, ad un determinato passo tn di integrazione, è possibile sia conoscere oltre la soluzione numerica a quel passo, anche una stima dell’errore locale.
 Come anticipato precedentemnte è importante notare che negli esempi precedenti noi avevamo a disposizione la soluzione analitica esatta del problema di van der pol e di conseguenza l'effettivo errore commesso dal metodo numerico, mentre in generale non è facile ottenerla o addirittura non è possibile ottenerla.
 Condividendo lo stesso Tableau di Butcher, i due metodi richiedono le stesse valutazioni funzionali Ki e quindi il costo computazionale è identico a quello del calcolo di un’unica soluzione data da uno solo dei 2 metodi: la seconda approssimazione è praticamente gratuita.
 Quindi, dei due metodi, uno svolge un ruolo primario, in quanto lo stimatore dell’errore approssima il suo errore di troncamento locale e la soluzione da esso prodotta è quella che viene accettata ad ogni passo; l’altro metodo, solitamente con ordine di convergenza maggiore, invece è soltanto funzionale a stimare l’errore.
