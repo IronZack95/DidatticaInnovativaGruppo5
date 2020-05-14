@@ -141,7 +141,7 @@ Utilizzando questo importante esempio è possibile spiegare meglio 2 concetti:
 
 
 SLIDE4:STADI METODO
-1) in primis gli stadi del metodo, ossia come interagiscono i vari coefficienti nel determinare
+in primis gli stadi del metodo, ossia come interagiscono i vari coefficienti nel determinare
 l'espressione degli stadi Ki, e come si determina la soluzione numerica.
 Infatti U_n+1, cioè l'approssimazione allo step successivo, è definito come u_n più una combinazione lineare di
 4 incrementi K1,K2,K3,k4 moltiplicati per i rispettivi coefficienti bi, in questo caso 1/6,1/3,1/3,1/6.
@@ -158,8 +158,8 @@ va a moltiplicare K2.
 Infine l'ultimo stadio K4 viene valutato in tn+1, infatti c4 è pari a 1, mentre a un e a43 moltiplica K4 per 1.
 
 
-SLIDE 5: UTILITA' TABLEAU
-2) L'esempio fornito inoltre ci mostra l'utilità del Tableau di
+SLIDE 5: CONSISTENZA
+L'esempio fornito inoltre ci mostra l'utilità del Tableau di
 Butcher. Prima di tutto perchè permette di implementare immediatamente un qualunque
 Metodo di Runge-Kutta, raggruppando i coefficienti al suo interno.
 E poi permette di verificare "a occhio" alcune proprietà che possono essere
@@ -169,21 +169,6 @@ per colonne.
 -Un esempio di questa applicazione è il riconoscimento della proprietà
 di CONSISTENZA, derivanta dalla sommatoria dei
 coeff. b_i, per i da 1 a s =1.
-
-
-SLIDE6:PROPRIETA'
-
-%% Da vedere se inserire o no dopo la spiegazione di mercoledì.
-
-[I metodi di Runge-Kutta possono essere scritti anch'essi nella seguente maniera,
-con h che indica il passo di integrazione e la funzione Phi detta funzione
-incremento scritta nel seguente modo. Supponendo che anche la seguente funzione
- Phi rispetti queste condizioni e in particolare la consizione di Lipschizianità
-rispetto al suo secondo argomento, è possibile affermare che il metodo di
-Runge-Kutta è zero stabile.
-Siccome il metodo è sia consistente che zerostabile allora il metodo è
-convergente.]
-
 
 
 MICHELE
@@ -252,6 +237,9 @@ Possiamo vedere il metodo di Heun risolve l’equazione dell’oscillatore di Va
 
 ZACK
 %% Da van der pol introdurre metodi embedded andando a sottilineare i vantaggi dell'adattività di passo
+%% Zack scrivo degli input per l'argomento embedded poi modifica come vuoi
+--Questa necessità di rendere il passo adattivo è data dal fatto che se da un lato vogliamo che il passo sia sufficientemente piccolo da soddisfare una data tolleranza, dall’altra vogliamo che il passo sia sufficientemente largo da evitare lavoro computazionale non necessario.
+--importante da notare è che gli errori riferiti agli esempi precedenti sono calcolati in base alla soluzione analitica esatta, che però normalmente non è così facile da calcolare. 
 
 SAMU
 
