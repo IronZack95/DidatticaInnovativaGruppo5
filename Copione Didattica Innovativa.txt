@@ -58,7 +58,7 @@ a parità di numero dei passi è possibile raggiungere un'ordine di accuratezza 
 la risposta è SI
 e per farlo bisogna aumentare l'ordine del metodo Stesso
 
-ricordiamo che l'ordine Q di un metodo è legato all'errore di troncamento come O di h elevato alla Q
+ricordiamo che l'ordine Q di un metodo è legato all'errore di troncamento come O dell'incremeto h elevato alla Q
 vediamo Come
 
 SLIDE: METODI DI ORDINE ELEVATO
