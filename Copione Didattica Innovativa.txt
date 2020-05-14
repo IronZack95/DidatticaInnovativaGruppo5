@@ -200,8 +200,7 @@ fornita dal metodo di Heun per valutarne l'efficacia e il funzionamento
 
 SLIDE 3
 
-Partiamo dal punto Un che può essere il punto fornito dalla condizione al contorno del problema oppure un punto generico calcolato al
-passo precedente.
+Partiamo dal punto Un fornito dalla condizione al contorno del problema.
 Calcoliamo il valore della funzione f nel punto (Tn, Un), ricordando che la funzione f rappresenta la derivata alla soluzione nel
 punto in cui viene valutata, in questo caso il suo valore è evidenziato nel grafico dal coefficiente angolare della retta rossa.
 
@@ -233,7 +232,7 @@ Facciamo ora un confronto fra il metodo di Heun e i metodi visti in precedenza
 Il metodo di Heun essendo un metodo del secondo ordine ha un errore di troncamento globale che cresce come un o grande di h^2, a
 differenza del metodo di Eulero in avanti, che essendo un metodo del primo ordine, ha un errore globale di troncamento pari ad un o grande di h. Il metodo di Heun risulta quindi più preciso
 Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, anch’esso del secondo ordine quindi con lo stesso errore,
-è la linearità del metodo di Heun, che risulta quindi più facile da implementare.
+è il fatto che il metodo di Heun, essendo esplicito risulta più facile da implementare.
 Bisogna però ricordare come il metodo di Crank-Nicholson essendo implicito è più versatile del metodo di heun, perchè presenta una regione di assoluta stabilità più estesa di quella di un metodo RK2 come il metodo di Heun.
 
 SLIDE 8
