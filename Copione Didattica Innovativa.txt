@@ -13,7 +13,6 @@ Buongiorno a tutti,
 oggi parleremo dei metodi ODE di ordine elevato
 
 SLIDE:DOVE SIAMO ARRIVATI
-
 Bene, a lezione abbiamo introdotto due metodi numerici, il metodo di Eulero e del metodo dei trapezi
 Il metodo di Eulero è il più basilare dei metodi espliciti per l'integrazione numerica di equazioni differenziali ordinarie,
 date le condizioni iniziali
@@ -22,7 +21,6 @@ e presentare altri metodi che ne rappresentano un miglioramento
 proviamo a vedere subito come si comporta il metodo di Eulero nella risoluzione di un equazione differenziale
 
 SLIDE: OSCILLATORE DI VAN DER POL
-
 come esempio scegliamo
 L'oscillatore di Van der Pol
 che è un tipo di oscillatore non conservativo con attenuazione non lineare.
@@ -35,7 +33,6 @@ possiamo vedere in figura la soluzione analitica nel range di tempo da 0 PI GREC
 e condizioni iniziali nulle per posizione e velocità di oscillazione
 
 SLIDE: EULERO - TEST
-
 Quindi inizialmo a testare il metodo di Eulero Esplicito con 25 passi equispaziati
 e possiamo vedere nei due grafici in basso una stima dell'errore che commette il metodo ad ogni passo
 nelle due componenti della soluzione, che varia in un range tra circa [0.1 -0.4]
@@ -51,7 +48,7 @@ SLIDE: EULERO - TEST
 e analogamente il range si dimezza ulteriormente raddoppiando il numero di passi.
 quindi arrivando a 100 passi
 
-SLIDE:OBIETTIVO
+SLIDE: OBIETTIVO
 notiamo quindi come ci sia una correlazione stretta tra l'aumento del numero di passi
 e l'errore commesso dal metodo numerico
 
@@ -60,6 +57,8 @@ a parità di numero dei passi è possibile raggiungere un'ordine di accuratezza 
 
 la risposta è SI
 e per farlo bisogna aumentare l'ordine del metodo Stesso
+
+ricordiamo che l'ordine Q di un metodo è legato all'errore di troncamento come O di h elevato alla Q
 vediamo Come
 
 SLIDE: METODI DI ORDINE ELEVATO
@@ -74,11 +73,10 @@ che prenderà quindi il nome di FUNZIONE INCREMENTO
 Da notare che tutti i metodi che abbiamo visto fin ora siano scrivibili in questa forma
 solo modificando per ogni metodo il rispettivo FI
 I due metodi di Eulero sono di ordine 1 e FI contiene un'unica valutazione della FUNZIONE
-mentre Cranck-Nicolson avendo 2 valutazioni della funzione Approssimerà meglio lo sviluppo di Taylor
-della funzione differenziale e infatti l'errore di troncamento risulta di ordine 2
+mentre Cranck-Nicolson avendo ha ordine 2 e FI contiene due valutazioni della FUNZIONE.
 
-Quindi ci aspettiamo che estendendo il numero di valutazioni della funzione F all'interno della FUNZIONE INCREMENTO
-si possano costruire metodi di ordine superiore
+Si può dimostrare che estendendo il numero di valutazioni della funzione F all'interno della FUNZIONE INCREMENTO
+si possano costruire metodi di ordine superiore in modo da approssimare meglio l'integrale
 
 Una particolare categoria di metodi detti di RUNGE-KUTTA infatti
 valutano la funzione s volte all'interno di ogni passo
