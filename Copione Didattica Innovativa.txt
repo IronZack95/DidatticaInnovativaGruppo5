@@ -300,7 +300,6 @@ Alcuni esempi di metodi embedded sono:
 AUTOMATIC STEP SIZE CONTROL
 SLIDE 1
 Come anticipato in precedenza, la stima dell’errore locale ci permette di rendere il passo adattivo.
-Questa necessità di rendere il passo adattivo è data dal fatto che se da un lato vogliamo che il passo sia sufficientemente piccolo da soddisfare una data tolleranza, dall’altra vogliamo che il passo sia sufficientemente largo da evitare lavoro computazionale non necessario.
 Quindi, come implementare un codice\algoritmo che renda il passo adattivo, diminuendo il costo computazionale, ma che comunque garantisca una tolleranza dell’errore locale scelta a priori?
 Si parta ovviamente dalla scelta di un passo iniziale h, il programma computa le 2 approssimazioni numeriche della soluzione u_n e u_n cappello, calcolate dai 2 metodi RK embedded. La differenza tra le approssimazioni dà una buona stima dell’errore locale. E ovviamente questa stima, ossia il modulo della differenza delle 2 soluzioni della coppia embedded, deve essere minore uguale della tolleranza prescelta.
 Come si può vedere, la tolleranza può essere formata da un termine di errore assoluto rappresentato dal fattore Atol e uno relativo Rtol che invece individua l’errore relativo tra le 2 computazioni,  tra il passo precedente e quello attuale.
