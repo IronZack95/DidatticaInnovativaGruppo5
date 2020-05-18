@@ -245,9 +245,9 @@ SLIDE 7
 
 Facciamo ora un confronto fra il metodo di Heun e i metodi visti
 in precedenza. Il metodo di Heun essendo un metodo del secondo ordine
-ha un errore di troncamento globale che cresce come un o grande di h^2, a
+ha un errore di troncamento globale che cresce come un o piccolo di h^2, a
 differenza del metodo di Eulero in avanti, che essendo un metodo del primo
-ordine, ha un errore globale di troncamento pari ad un o grande di h.
+ordine, ha un errore globale di troncamento pari ad un o piccolo di h.
 Il metodo di Heun risulta più preciso ed il suo errore scala il
 quadrato di h, quindi se dimezzo h l'errore si riduce ad un quarto, di
 contro nel metodo di eulero se dimezzo il passo l'errore si dimezza.
