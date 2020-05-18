@@ -35,7 +35,8 @@ e condizioni iniziali nulle per posizione e velocità di oscillazione
 SLIDE: EULERO - TEST
 Quindi inizialmo a testare il metodo di Eulero Esplicito con 25 passi equispaziati
 e possiamo vedere nei due grafici in basso una stima dell'errore che commette il metodo ad ogni passo
-nelle due componenti della soluzione, che varia in un range tra circa [0.1 -0.4]
+nelle due componenti della soluzione,
+che varia in un range tra circa [0.1 -0.4]
 
 SLIDE: EULERO - TEST
 aumentando il numero di passi del doppio, quindi a 50 passi,
@@ -74,12 +75,12 @@ che prenderà quindi il nome di FUNZIONE INCREMENTO
 Da notare che tutti i metodi che abbiamo visto fin ora siano scrivibili in questa forma
 solo modificando per ogni metodo il rispettivo FI
 I due metodi di Eulero sono di ordine 1 e FI contiene un'unica valutazione della FUNZIONE
-mentre Cranck-Nicolson avendo ha ordine 2 e FI contiene due valutazioni della FUNZIONE.
+mentre Cranck-Nicolson ha ordine 2 e FI contiene due valutazioni della FUNZIONE.
 
 Si può dimostrare che estendendo il numero di valutazioni della funzione F all'interno della FUNZIONE INCREMENTO
 si possano costruire metodi di ordine superiore in modo da approssimare meglio l'integrale
 
-Una particolare categoria di metodi detti di RUNGE-KUTTA infatti
+Una particolare categoria di metodi detti di RUNGHE-KUTTA infatti
 valutano la funzione, s volte, all'interno di ogni passo
 generando un coefficente K per ogni valutazione
 dopo di che la somma pesata dei coefficenti K tramite dei particolari pesi B
@@ -92,7 +93,7 @@ o il numero S che rappresenta gli STADI del metodo
 SLIDE: RK4 -TEST
 Sempre con l'esempio dell'oscillatore utilizzando una funzione RUNGHE-KUTTA del quarto ordine a 4 stadi
 
-sempre utilizzando un 100 passi come l'esempio precedente
+sempre utilizzando 100 passi come l'esempio precedente
 vediamo che l'errore è ridotto drasticamente a 10 alla meno 8
 mentre in Eulero, alle stesse condizioni, l'errore era circa 10 alla 6 volte più grande
 
