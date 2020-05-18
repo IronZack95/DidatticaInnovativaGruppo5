@@ -247,12 +247,14 @@ in precedenza. Il metodo di Heun essendo un metodo del secondo ordine
 ha un errore di troncamento globale che cresce come un o grande di h^2, a
 differenza del metodo di Eulero in avanti, che essendo un metodo del primo 
 ordine, ha un errore globale di troncamento pari ad un o grande di h. 
-Il metodo di Heun risulta quindi più preciso
+Il metodo di Heun risulta più preciso ed il suo errore scala il
+quadrato di h, quindi se dimezzo h l'errore si riduce ad un quarto, di
+contro nel metodo di eulero se dimezzo il passo l'errore si dimezza.
 Il vantaggio introdotto dal metodo di Heun rispetto al metodo dei trapezi, 
 anch’esso del secondo ordine quindi con lo stesso errore, è il fatto che 
 il metodo di Heun, essendo esplicito risulta più facile da implementare.
 Bisogna però ricordare come il metodo dei Trapezi essendo implicito è più 
-versatile del metodo di heun, perchè presenta una regione di assoluta 
+stabile del metodo di heun, perchè presenta una regione di assoluta 
 stabilità più estesa di quella di un metodo RK2 come il metodo di Heun, 
 come si può vedere dai grafici.
 
@@ -261,8 +263,8 @@ SLIDE 8
 Possiamo vedere il metodo di Heun risolve l’equazione dell’oscillatore 
 di Van der Pol. L’ordine di grandezza dell’errore introdotto è 10^-4, 
 usando invece il metodo di Eulero con lo stesso passo di integrazione 
-l’ordine di grandezza è  10^-1; otteniamo quindi una accuratezza maggiore 
-mantenendo quasi inalterato il costo computazionale.
+l’ordine di grandezza è  10^-1; otteniamo quindi una accuratezza molto 
+maggiore limitandoci a raddoppiare il costo computazionale.
 
 ZACK
 
